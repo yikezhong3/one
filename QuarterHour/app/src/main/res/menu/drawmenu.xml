@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/action_setting"
+            android:icon="@drawable/duanzi_select"
+            android:title="@string/GZtitle" />
+        <item
+            android:id="@+id/action_night"
+            android:icon="@drawable/duanzi_select"
+            android:title="@string/SCtitle" />
+        <item
+            android:id="@+id/action_timer"
+            android:icon="@drawable/duanzi_select"
+            android:title="@string/HStitle" />
+        <item
+            android:id="@+id/action_exit"
+            android:icon="@drawable/duanzi_select"
+            android:title="@string/TZtitle" />
+    </group>
+</menu>

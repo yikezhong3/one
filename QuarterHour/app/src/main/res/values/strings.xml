@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">一刻钟</string>
+    <string name="GZtitle">我的关注</string>
+    <string name="SCtitle">我的收藏</string>
+    <string name="HStitle">搜索好友</string>
+    <string name="TZtitle">消息通知</string>
+</resources>
