@@ -21,6 +21,7 @@ import butterknife.Unbinder;
 public abstract class BaseFragment<V , P extends  BasePresenter> extends Fragment {
     public P presenter;
     private Unbinder bind;
+    private View view;
 
     @Nullable
     @Override
@@ -43,7 +44,9 @@ public abstract class BaseFragment<V , P extends  BasePresenter> extends Fragmen
         if (presenter != null) {
             presenter.attachView((V) this);
         }
-        return inflater.inflate(getLayoutId(), container, false);
+        view = inflater.inflate(getLayoutId(), container, false);
+        initView(view);
+        return view;
     }
 
     protected abstract int getLayoutId();
@@ -53,10 +56,13 @@ public abstract class BaseFragment<V , P extends  BasePresenter> extends Fragmen
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        initView();
+
+        init();
     }
 
-    protected abstract void initView();
+    protected abstract void init();
+
+    protected abstract void initView(View view);
 
     protected abstract P getPresenter();
 
