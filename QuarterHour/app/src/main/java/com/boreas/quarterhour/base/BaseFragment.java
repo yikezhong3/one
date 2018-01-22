@@ -25,6 +25,9 @@ public abstract class BaseFragment<V , P extends  BasePresenter> extends Fragmen
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //绑定ButterKnife
+        View view = inflater.inflate(getLayoutId(), container, false);
+        bind = ButterKnife.bind(this, view);
         initDagger();
         //沉浸式
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {//5.0及以上
@@ -37,13 +40,12 @@ public abstract class BaseFragment<V , P extends  BasePresenter> extends Fragmen
             WindowManager.LayoutParams localLayoutParams = getActivity().getWindow().getAttributes();
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
-        //绑定ButterKnife
-        bind = ButterKnife.bind(getActivity());
+
         presenter = getPresenter();
         if (presenter != null) {
             presenter.attachView((V) this);
         }
-        return inflater.inflate(getLayoutId(), container, false);
+        return view;
     }
 
     protected abstract int getLayoutId();

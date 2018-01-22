@@ -33,7 +33,7 @@
             android:layout_width="@dimen/pen_width"
             android:layout_height="@dimen/pen_height"
             android:src="@drawable/bianji"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"

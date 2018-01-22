@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawerlayout"
+    android:orientation="vertical"
     tools:context="com.boreas.quarterhour.MainActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
     <include layout="@layout/activity_head"></include>
 
     <com.hjm.bottomtabbar.BottomTabBar
@@ -22,14 +17,8 @@
         app:tab_unselected_color="@color/colorGray"
         android:layout_weight="1">
     </com.hjm.bottomtabbar.BottomTabBar>
-    </LinearLayout>
-
-    <android.support.design.widget.NavigationView
-        android:id="@+id/navigation_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:menu="@menu/drawmenu"/>
 
 
-</android.support.v4.widget.DrawerLayout>
+</LinearLayout>
+
+
