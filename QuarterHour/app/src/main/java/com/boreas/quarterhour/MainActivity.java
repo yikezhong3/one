@@ -128,7 +128,7 @@ public class MainActivity extends BaseActivity{
 
     public View getLeftMenu() {
          final int[] imagesId={R.mipmap.slid_aixin,R.mipmap.slid_wujaioxiang,R.mipmap.slid_select,R.mipmap.slid_lingdang};
-         final String[] names={"短毛猫","猴子","兔子","老鼠"};
+         final String[] names={"我的关注","我的收藏","搜索好友","消息通知"};
         final int[] contents={R.mipmap.slid_more,R.mipmap.slid_more,R.mipmap.slid_more,R.mipmap.slid_more};
         //从主布局文件绑定的Activity调用另一个布局文件必须调用LayoutInflater
         LayoutInflater inflater = getLayoutInflater();
