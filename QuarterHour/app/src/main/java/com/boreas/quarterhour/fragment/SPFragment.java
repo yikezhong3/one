@@ -1,5 +1,6 @@
 package com.boreas.quarterhour.fragment;
 
+import android.view.View;
 import android.widget.TextView;
 
 import com.boreas.quarterhour.R;
@@ -26,10 +27,15 @@ public class SPFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView() {
-        tv.setText("1233333333333");
+    protected void init() {
 
     }
+
+    @Override
+    protected void initView(View view) {
+
+    }
+
 
     @Override
     protected BasePresenter getPresenter() {

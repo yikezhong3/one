@@ -4,6 +4,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.boreas.quarterhour.R;
@@ -47,13 +48,16 @@ public class TJFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView() {
-        titlearray = Arrays.asList("热门","关注");
-        list = new ArrayList<Fragment>();
-
-
+    protected void init() {
 
     }
+
+    @Override
+    protected void initView(View view) {
+
+    }
+
+
 
     @Override
     protected BasePresenter getPresenter() {
