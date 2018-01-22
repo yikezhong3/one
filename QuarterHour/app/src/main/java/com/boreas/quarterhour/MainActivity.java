@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -125,13 +127,51 @@ public class MainActivity extends BaseActivity{
     }
 
     public View getLeftMenu() {
+         final int[] imagesId={R.mipmap.slid_aixin,R.mipmap.slid_wujaioxiang,R.mipmap.slid_select,R.mipmap.slid_lingdang};
+         final String[] names={"短毛猫","猴子","兔子","老鼠"};
+        final int[] contents={R.mipmap.slid_more,R.mipmap.slid_more,R.mipmap.slid_more,R.mipmap.slid_more};
         //从主布局文件绑定的Activity调用另一个布局文件必须调用LayoutInflater
         LayoutInflater inflater = getLayoutInflater();
         //得到menu的View
         View v = inflater.inflate(R.layout.leftmenu, null);
         ListView listview = (ListView) v.findViewById(R.id.listView1);
-        listview.setAdapter(new ArrayAdapter<String>(this,
-                android.R.layout.simple_expandable_list_item_1, getData()));
+        ListView listView1 = v.findViewById(R.id.listView1);
+        BaseAdapter adapter = new BaseAdapter() {
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                // TODO 自动生成的方法存根
+                View layout=View.inflate(MainActivity.this, R.layout.slid_custom_list, null);
+                ImageView face = (ImageView)layout.findViewById(R.id.face);
+                TextView name =(TextView)layout.findViewById(R.id.name);
+                ImageView mark = (ImageView)layout.findViewById(R.id.mark);
+
+                face.setImageResource(imagesId[position]);
+                name.setText(names[position]);
+                mark.setImageResource(contents[position]);
+
+                return layout;
+            }
+
+            @Override
+            public long getItemId(int position) {
+                // TODO 自动生成的方法存根
+                return position;
+            }
+
+            @Override
+            public Object getItem(int position) {
+                // TODO 自动生成的方法存根
+                return names[position];
+            }
+
+            @Override
+            public int getCount() {
+                // TODO 自动生成的方法存根
+                return names.length;
+            }
+        };///new BaseAdapter()
+      listView1.setAdapter(adapter);
       listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
           @Override
           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -140,13 +180,5 @@ public class MainActivity extends BaseActivity{
       });
         return v;
     }
-    private List<String> getData() {
 
-        List<String> data = new ArrayList<String>();
-        data.add("测试数据1");
-        data.add("测试数据2");
-        data.add("测试数据3");
-        data.add("测试数据4");
-        return data;
-    }
 }
