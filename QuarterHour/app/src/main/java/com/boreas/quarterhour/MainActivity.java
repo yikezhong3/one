@@ -2,10 +2,15 @@ package com.boreas.quarterhour;
 
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.boreas.quarterhour.base.BaseActivity;
 import com.boreas.quarterhour.base.BasePresenter;
@@ -14,12 +19,16 @@ import com.boreas.quarterhour.fragment.QTFragment;
 import com.boreas.quarterhour.fragment.SPFragment;
 import com.boreas.quarterhour.fragment.TJFragment;
 import com.hjm.bottomtabbar.BottomTabBar;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity{
 
     @BindView(R.id.bottomBar)
     BottomTabBar bottomBar;
@@ -29,8 +38,8 @@ public class MainActivity extends BaseActivity {
     TextView Title;
     @BindView(R.id.sou_s)
     LinearLayout souS;
-    @BindView(R.id.drawerlayout)
-    DrawerLayout dl;
+    private SlidingMenu menu;
+
     @Override
     protected void initDagger() {
     }
@@ -66,13 +75,10 @@ public class MainActivity extends BaseActivity {
                     }
                 });
 
-        onSlidingClick();
-    }
-
-    //侧滑
-    public void onSlidingClick() {
 
     }
+
+
 
     @Override
     public BasePresenter getPresenter() {
@@ -85,7 +91,6 @@ public class MainActivity extends BaseActivity {
      * @param view
      */
     public void toggleMenu(View view) {
-
     }
 
     @Override
@@ -93,5 +98,55 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+        // configure the SlidingMenu
+        menu = new SlidingMenu(this);
+        menu.setMode(SlidingMenu.LEFT);
+        // 设置触摸屏幕的模式
+        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+        menu.setShadowWidthRes(R.dimen.shadow_width);
+        menu.setShadowDrawable(R.color.colorAccent);
+        // 设置滑动菜单视图的宽度
+        menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+        // 设置渐入渐出效果的值
+        menu.setFadeDegree(0.35f);
+        /**
+         * SLIDING_WINDOW will include the Title/ActionBar in the content
+         * section of the SlidingMenu, while SLIDING_CONTENT does not.
+         */
+        menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+        //为侧滑菜单设置布局
+        menu.setMenu(getLeftMenu());
+        icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.toggle();
+            }
+        });
+    }
+
+    public View getLeftMenu() {
+        //从主布局文件绑定的Activity调用另一个布局文件必须调用LayoutInflater
+        LayoutInflater inflater = getLayoutInflater();
+        //得到menu的View
+        View v = inflater.inflate(R.layout.leftmenu, null);
+        ListView listview = (ListView) v.findViewById(R.id.listView1);
+        listview.setAdapter(new ArrayAdapter<String>(this,
+                android.R.layout.simple_expandable_list_item_1, getData()));
+      listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+          @Override
+          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+              Toast.makeText(MainActivity.this,"点击了"+position,Toast.LENGTH_SHORT).show();
+          }
+      });
+        return v;
+    }
+    private List<String> getData() {
+
+        List<String> data = new ArrayList<String>();
+        data.add("测试数据1");
+        data.add("测试数据2");
+        data.add("测试数据3");
+        data.add("测试数据4");
+        return data;
     }
 }

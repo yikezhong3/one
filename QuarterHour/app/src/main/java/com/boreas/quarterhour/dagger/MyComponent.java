@@ -1,5 +1,7 @@
 package com.boreas.quarterhour.dagger;
 
+import com.boreas.quarterhour.activity.LeadActivity;
+
 import dagger.Component;
 
 /**
@@ -7,5 +9,5 @@ import dagger.Component;
  */
 @Component(modules = MyMoudle.class)
 public interface MyComponent {
-
+    public void inject(LeadActivity lead);
 }

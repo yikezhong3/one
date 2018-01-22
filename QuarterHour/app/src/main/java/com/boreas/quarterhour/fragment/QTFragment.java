@@ -1,5 +1,7 @@
 package com.boreas.quarterhour.fragment;
 
+import android.view.View;
+
 import com.boreas.quarterhour.R;
 import com.boreas.quarterhour.base.BaseFragment;
 import com.boreas.quarterhour.base.BasePresenter;
@@ -20,9 +22,18 @@ public class QTFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView() {
+    protected void init() {
 
     }
+
+    @Override
+    protected void initView(View view) {
+
+    }
+
+
+
+
 
     @Override
     protected BasePresenter getPresenter() {
