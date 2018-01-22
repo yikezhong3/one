@@ -29,6 +29,7 @@ public class BeenModel {
                     @Override
                     public void onNext(com.boreas.quarterhour.model.LBModel lbModel) {
                         sendData.send(lbModel);
+
                     }
 
                     @Override

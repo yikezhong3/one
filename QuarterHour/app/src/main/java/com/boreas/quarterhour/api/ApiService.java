@@ -1,6 +1,7 @@
 package com.boreas.quarterhour.api;
 
 import com.boreas.quarterhour.model.LBModel;
+import com.boreas.quarterhour.model.Splash;
 
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
@@ -11,6 +12,8 @@ import retrofit2.http.GET;
 
 public interface ApiService {
 
+    @GET("HPImageArchive.aspx?format=js&idx=0&n=1")
+    Flowable<Splash> getLead();
     //轮播
     @GET("front/")
     Flowable<LBModel> getHome();

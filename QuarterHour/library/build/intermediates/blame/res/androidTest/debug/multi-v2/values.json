@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\yikezhong\\QuarterHour\\library\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
+            "outputFile": "E:\\yikezhong\\one\\QuarterHour\\library\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
             "map": [
                 {
-                    "source": "E:\\yikezhong\\QuarterHour\\library\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "source": "E:\\yikezhong\\one\\QuarterHour\\library\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "from": {
                         "startLines": "14",
                         "startColumns": "4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "E:\\yikezhong\\QuarterHour\\library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+            "outputFile": "E:\\yikezhong\\one\\QuarterHour\\library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "E:\\yikezhong\\QuarterHour\\library\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "source": "E:\\yikezhong\\one\\QuarterHour\\library\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "from": {
                         "startLines": "14",
                         "startColumns": "4",

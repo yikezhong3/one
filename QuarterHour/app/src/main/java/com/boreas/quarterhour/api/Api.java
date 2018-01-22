@@ -6,5 +6,7 @@ package com.boreas.quarterhour.api;
 
 public class Api {
 
+    public static final String SPLASHBASEURL = "http://cn.bing.com/";
     public static final String lunbo = "http://api.svipmovie.com/";
+
 }

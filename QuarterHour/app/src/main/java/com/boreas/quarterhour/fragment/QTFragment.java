@@ -32,6 +32,9 @@ public class QTFragment extends BaseFragment {
     }
 
 
+
+
+
     @Override
     protected BasePresenter getPresenter() {
         return null;
