@@ -1,5 +1,6 @@
 package com.boreas.quarterhour;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.boreas.quarterhour.activity.LoginHomepage;
 import com.boreas.quarterhour.base.BaseActivity;
 import com.boreas.quarterhour.base.BasePresenter;
 import com.boreas.quarterhour.fragment.DZFragment;
@@ -136,8 +138,16 @@ public class MainActivity extends BaseActivity{
         View v = inflater.inflate(R.layout.leftmenu, null);
         ListView listview = (ListView) v.findViewById(R.id.listView1);
         ListView listView1 = v.findViewById(R.id.listView1);
-        BaseAdapter adapter = new BaseAdapter() {
+        ImageView login_photo = v.findViewById(R.id.login_photo);
 
+        //头像的点击事件
+        login_photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               startActivity(new Intent(MainActivity.this, LoginHomepage.class));
+            }
+        });
+        BaseAdapter adapter = new BaseAdapter() {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 // TODO 自动生成的方法存根
@@ -172,6 +182,7 @@ public class MainActivity extends BaseActivity{
             }
         };///new BaseAdapter()
       listView1.setAdapter(adapter);
+      //slid中listview的 点击事件
       listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
           @Override
           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
