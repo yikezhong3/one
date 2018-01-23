@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.boreas.quarterhour"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -53,4 +53,5 @@ dependencies {
     //xrecyclerview
     compile 'com.jcodecraeer:xrecyclerview:1.5.2'
     implementation project(':library')
+    compile 'com.jaeger.statusbaruitl:library:1.0.0'
 }

@@ -1,7 +1,6 @@
 package com.boreas.quarterhour.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,11 +12,11 @@ import com.boreas.quarterhour.dagger.DaggerMyComponent;
 import com.boreas.quarterhour.mvp.presenter.SplashPresenter;
 import com.boreas.quarterhour.mvp.view.SplashView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class LeadActivity extends BaseActivity<SplashView, SplashPresenter> implements SplashView{
 
@@ -29,6 +28,7 @@ public class LeadActivity extends BaseActivity<SplashView, SplashPresenter> impl
     public Handler mHandler = new Handler();
     @Inject
     SplashPresenter presenter;
+    private RequestManager with;
 
     @Override
     public int getLayout() {
@@ -41,8 +41,13 @@ public class LeadActivity extends BaseActivity<SplashView, SplashPresenter> impl
     }
 
     @Override
+    protected boolean enableSliding() {
+        return false;
+    }
+    @Override
     protected void initView() {
         presenter.getdata();
+        with = Glide.with(LeadActivity.this);
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -51,29 +56,24 @@ public class LeadActivity extends BaseActivity<SplashView, SplashPresenter> impl
                 startActivity(intent);
                 finish();
             }
-        }, 3000);
+        }, 2000);
     }
-
 
     @Override
     public SplashPresenter getPresenter() {
         return presenter;
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 
     @Override
     public void onSuccess(final String data) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Glide.with(LeadActivity.this).load(data).into(ivSplash);
+                with.load(data).into(ivSplash);
             }
         });
+
+
     }
 }

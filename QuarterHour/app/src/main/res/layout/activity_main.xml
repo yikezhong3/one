@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.boreas.quarterhour.MainActivity">
+
     <include layout="@layout/activity_head"></include>
 
     <com.hjm.bottomtabbar.BottomTabBar
