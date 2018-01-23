@@ -10,6 +10,10 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.boreas.quarterhour.myapp.Myapp;
+import com.boreas.quarterhour.utils.SlidingLayout;
+import com.jaeger.library.StatusBarUtil;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -27,8 +31,11 @@ public abstract class BaseActivity  <V , P extends  BasePresenter> extends AppCo
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
+        //设置颜色
+        StatusBarUtil.setColor(this, Color.BLUE );
         //ButterKnife绑定
         bind = ButterKnife.bind(this);
+
         //沉浸式
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {//5.0及以上
             View decorView = getWindow().getDecorView();
@@ -40,6 +47,11 @@ public abstract class BaseActivity  <V , P extends  BasePresenter> extends AppCo
             WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
+        if(enableSliding()){
+            SlidingLayout rootView = new SlidingLayout(Myapp.getmInstance());
+            rootView.bindActivity(this);
+        }
+
         initDagger();
         presenter = getPresenter();
         if(presenter!= null){
@@ -49,7 +61,9 @@ public abstract class BaseActivity  <V , P extends  BasePresenter> extends AppCo
 
     }
 
-
+    protected boolean enableSliding() {
+        return true;
+    }
 
     protected abstract void initDagger();
 

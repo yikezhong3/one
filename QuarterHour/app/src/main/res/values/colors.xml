@@ -8,5 +8,9 @@
     <color name="colorBlue"> #03A9F4</color>
     <color name="colorWhite"> #FFFFFF</color>
     <color name="black">#000000</color>
+<<<<<<< HEAD
     <color name="buttonbackground">#e3ff02</color>
+=======
+    <color name="white">#ffffff</color>
+>>>>>>> c1d5a6b1586ba1047253c8becd887f8f86487742
 </resources>

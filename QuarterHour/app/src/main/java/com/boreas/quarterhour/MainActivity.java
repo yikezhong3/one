@@ -2,7 +2,6 @@ package com.boreas.quarterhour;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +45,7 @@ public class MainActivity extends BaseActivity{
 
     @Override
     protected void initDagger() {
+
     }
 
     @Override
@@ -55,7 +55,6 @@ public class MainActivity extends BaseActivity{
 
     @Override
     protected void initView() {
-
         bottomBar.init(getSupportFragmentManager())
                 .setImgSize(50, 50)
                 .setFontSize(15)
@@ -100,7 +99,6 @@ public class MainActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
         // configure the SlidingMenu
         menu = new SlidingMenu(this);
@@ -109,6 +107,7 @@ public class MainActivity extends BaseActivity{
         menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         menu.setShadowWidthRes(R.dimen.shadow_width);
         menu.setShadowDrawable(R.color.colorAccent);
+        menu.attachToActivity(this,SlidingMenu.SLIDING_CONTENT,true);
         // 设置滑动菜单视图的宽度
         menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
         // 设置渐入渐出效果的值
@@ -117,7 +116,6 @@ public class MainActivity extends BaseActivity{
          * SLIDING_WINDOW will include the Title/ActionBar in the content
          * section of the SlidingMenu, while SLIDING_CONTENT does not.
          */
-        menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
         //为侧滑菜单设置布局
         menu.setMenu(getLeftMenu());
         icon.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +124,10 @@ public class MainActivity extends BaseActivity{
                 menu.toggle();
             }
         });
+    }
+    @Override
+    protected boolean enableSliding() {
+        return false;
     }
 
     public View getLeftMenu() {

@@ -1,0 +1,48 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\yikezhong\\one\\QuarterHour\\library\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
+            "map": [
+                {
+                    "source": "E:\\yikezhong\\one\\QuarterHour\\library\\res\\values\\ids.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "42",
+                        "endOffsets": "95"
+                    },
+                    "to": {
+                        "startLines": "14",
+                        "startColumns": "4",
+                        "startOffsets": "1092",
+                        "endColumns": "42",
+                        "endOffsets": "1130"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\yikezhong\\one\\QuarterHour\\library\\build\\intermediates\\res\\merged\\release\\values\\values.xml",
+            "map": [
+                {
+                    "source": "E:\\yikezhong\\one\\QuarterHour\\library\\res\\values\\ids.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "42",
+                        "endOffsets": "95"
+                    },
+                    "to": {
+                        "startLines": "14",
+                        "startColumns": "4",
+                        "startOffsets": "1092",
+                        "endColumns": "42",
+                        "endOffsets": "1130"
+                    }
+                }
+            ]
+        }
+    ]
+}
