@@ -5,13 +5,29 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.boreas.quarterhour.R;
+import com.boreas.quarterhour.base.BaseActivity;
+import com.boreas.quarterhour.base.BasePresenter;
 
-public class ForgetActivity extends AppCompatActivity {
+public class ForgetActivity extends BaseActivity {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forget);
-        Toast.makeText(this,"",Toast.LENGTH_SHORT).show();
+    protected void initDagger() {
+
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_forget;
+    }
+
+    @Override
+    public BasePresenter getPresenter() {
+        return null;
     }
 }

@@ -11,12 +11,14 @@ import android.widget.Toast;
 
 import com.boreas.quarterhour.MainActivity;
 import com.boreas.quarterhour.R;
+import com.boreas.quarterhour.base.BaseActivity;
+import com.boreas.quarterhour.base.BasePresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends BaseActivity {
 
     @BindView(R.id.callback)
     ImageView callback;
@@ -30,8 +32,27 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
+    }
+
+    @Override
+    protected void initDagger() {
+
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_register;
+    }
+
+    @Override
+    public BasePresenter getPresenter() {
+        return null;
     }
 
     @OnClick({R.id.callback, R.id.existing_account, R.id.register, R.id.tourist})
