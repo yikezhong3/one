@@ -1,12 +1,9 @@
 package com.boreas.quarterhour.utils;
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,6 +17,7 @@ import com.boreas.quarterhour.R;
  * Created by chenyan.wang on 2015/10/29.
  */
 public class SlidingLayout extends FrameLayout {
+
     // 页面边缘阴影的宽度默认值
     private static final int SHADOW_WIDTH = 200;
     private Activity mActivity;
@@ -36,23 +34,18 @@ public class SlidingLayout extends FrameLayout {
     private int mLastTouchY;
     private boolean isConsumed = false;
 
-    public SlidingLayout(@NonNull Context context) {
-        this(context,null);
+    public SlidingLayout(Context context) {
+        this(context, null);
     }
 
-    public SlidingLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs,0);
+    public SlidingLayout(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
     }
 
-    public SlidingLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        this(context, attrs, defStyleAttr,0);
-    }
-
-    public SlidingLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
+    public SlidingLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
         initView(context);
     }
-
 
     private void initView(Context context) {
         mScroller = new Scroller(context);

@@ -5,12 +5,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
 
-import com.boreas.quarterhour.myapp.Myapp;
 import com.boreas.quarterhour.utils.SlidingLayout;
 import com.jaeger.library.StatusBarUtil;
 
@@ -25,7 +22,6 @@ public abstract class BaseActivity  <V , P extends  BasePresenter> extends AppCo
 
     private  P presenter;
     private Unbinder bind;
-    private long exitTime = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,15 +43,14 @@ public abstract class BaseActivity  <V , P extends  BasePresenter> extends AppCo
             WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
-        if(enableSliding()){
-            SlidingLayout rootView = new SlidingLayout(Myapp.getmInstance());
-            rootView.bindActivity(this);
-        }
-
         initDagger();
         presenter = getPresenter();
         if(presenter!= null){
             presenter.attachView((V)this);
+        }
+        if (enableSliding()) {
+            SlidingLayout rootView = new SlidingLayout(this);
+            rootView.bindActivity(this);
         }
         initView();
 
@@ -64,7 +59,6 @@ public abstract class BaseActivity  <V , P extends  BasePresenter> extends AppCo
     protected boolean enableSliding() {
         return true;
     }
-
     protected abstract void initDagger();
 
     protected abstract void initView();
@@ -72,25 +66,7 @@ public abstract class BaseActivity  <V , P extends  BasePresenter> extends AppCo
     public abstract  int getLayout();
 
     public abstract  P getPresenter();
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            exit();
-            return false;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
 
-    public void exit() {
-        if ((System.currentTimeMillis() - exitTime) > 2000) {
-            Toast.makeText(getApplicationContext(), "再按一次退出程序",
-                    Toast.LENGTH_SHORT).show();
-            exitTime = System.currentTimeMillis();
-        } else {
-            finish();
-            System.exit(0);
-        }
-    }
     @Override
     protected void onDestroy() {
         super.onDestroy();

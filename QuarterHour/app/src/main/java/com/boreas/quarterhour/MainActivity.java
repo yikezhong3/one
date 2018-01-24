@@ -2,11 +2,11 @@ package com.boreas.quarterhour;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,9 +24,6 @@ import com.boreas.quarterhour.fragment.TJFragment;
 import com.hjm.bottomtabbar.BottomTabBar;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -42,6 +39,7 @@ public class MainActivity extends BaseActivity{
     @BindView(R.id.sou_s)
     LinearLayout souS;
     private SlidingMenu menu;
+    private long exitTime = 0;
 
     @Override
     protected void initDagger() {
@@ -53,6 +51,10 @@ public class MainActivity extends BaseActivity{
         return R.layout.activity_main;
     }
 
+    @Override
+    protected boolean enableSliding() {
+        return false;
+    }
     @Override
     protected void initView() {
         bottomBar.init(getSupportFragmentManager())
@@ -130,10 +132,6 @@ public class MainActivity extends BaseActivity{
             }
         });
     }
-    @Override
-    protected boolean enableSliding() {
-        return false;
-    }
 
     public View getLeftMenu() {
          final int[] imagesId={R.mipmap.slid_aixin,R.mipmap.slid_wujaioxiang,R.mipmap.slid_select,R.mipmap.slid_lingdang};
@@ -194,6 +192,26 @@ public class MainActivity extends BaseActivity{
           }
       });
         return v;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exit();
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    public void exit() {
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            Toast.makeText(getApplicationContext(), "再按一次退出程序",
+                    Toast.LENGTH_SHORT).show();
+            exitTime = System.currentTimeMillis();
+        } else {
+            finish();
+            System.exit(0);
+        }
     }
 
 }

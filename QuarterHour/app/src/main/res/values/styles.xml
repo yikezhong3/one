@@ -1,13 +1,10 @@
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
-    <style name="AppTheme.Slide" parent="@style/AppTheme">
+    <style name="AppTheme.Slide" parent="AppTheme">
         <!--Required-->
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
@@ -20,7 +17,6 @@
         <item name="android:activityCloseEnterAnimation">@anim/anim_slide_in</item>
         <item name="android:activityCloseExitAnimation">@anim/anim_slide_out</item>
     </style>
-
 
     <style name="GuideTheme" parent="AppTheme">
         <item name="android:windowIsTranslucent">true</item>

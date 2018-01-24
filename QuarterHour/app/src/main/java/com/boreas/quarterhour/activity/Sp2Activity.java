@@ -16,10 +16,6 @@ public class Sp2Activity extends BaseActivity {
     }
 
     @Override
-    protected boolean enableSliding() {
-        return true;
-    }
-    @Override
     public int getLayout() {
         return R.layout.activity_sp2;
     }
