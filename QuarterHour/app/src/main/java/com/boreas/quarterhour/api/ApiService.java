@@ -15,7 +15,7 @@ public interface ApiService {
     @GET("HPImageArchive.aspx?format=js&idx=0&n=1")
     Flowable<Splash> getLead();
     //轮播
-    @GET("front/")
+    @GET("quarter/getAd")
     Flowable<LBModel> getHome();
 
 }
