@@ -139,17 +139,15 @@ public class MainActivity extends BaseActivity{
         //得到menu的View
         View v = inflater.inflate(R.layout.leftmenu, null);
         ListView listview = (ListView) v.findViewById(R.id.listView1);
-        ListView listView1 = v.findViewById(R.id.listView1);
-        ImageView login_photo = v.findViewById(R.id.login_photo);
-
-        //头像的点击事件
-        login_photo.setOnClickListener(new View.OnClickListener() {
+        ImageView touxiang = v.findViewById(R.id.slid_touxiang);
+        touxiang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               startActivity(new Intent(MainActivity.this, LoginHomepage.class));
+                startActivity(new Intent(MainActivity.this, LoginHomepage.class));
             }
         });
         BaseAdapter adapter = new BaseAdapter() {
+
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 // TODO 自动生成的方法存根
@@ -183,8 +181,7 @@ public class MainActivity extends BaseActivity{
                 return names.length;
             }
         };///new BaseAdapter()
-      listView1.setAdapter(adapter);
-      //slid中listview的 点击事件
+      listview.setAdapter(adapter);
       listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
           @Override
           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
