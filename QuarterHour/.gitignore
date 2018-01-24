@@ -4,3 +4,5 @@
 /app/build/
 /QuarterHour.iml
 /local.properties
+/library/build/
+/library/library.iml

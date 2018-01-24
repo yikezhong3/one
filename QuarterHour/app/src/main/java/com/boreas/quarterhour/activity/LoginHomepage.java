@@ -9,12 +9,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.boreas.quarterhour.R;
+import com.boreas.quarterhour.base.BaseActivity;
+import com.boreas.quarterhour.base.BasePresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginHomepage extends AppCompatActivity {
+public class LoginHomepage extends BaseActivity {
 
     @BindView(R.id.login_wx)
     ImageView loginWx;
@@ -26,8 +28,27 @@ public class LoginHomepage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_homepage);
         ButterKnife.bind(this);
+    }
+
+    @Override
+    protected void initDagger() {
+
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_login_homepage;
+    }
+
+    @Override
+    public BasePresenter getPresenter() {
+        return null;
     }
 
     @OnClick({R.id.login_wx, R.id.login_qq, R.id.login_other})
