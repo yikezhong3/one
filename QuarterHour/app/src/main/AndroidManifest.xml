@@ -5,20 +5,33 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <application
-        android:name=".myapp.Myapp"
+        android:name=".view.myapp.Myapp"
         android:allowBackup="true"
         android:icon="@drawable/kezhong"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Slide">
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5a6880f9a40fa34ecf000105" >
+        </meta-data>
         <activity
-            android:name=".MainActivity"
+            android:name=".view.activity.MainActivity"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".activity.LeadActivity"
+            android:name=".view.activity.LeadActivity"
             android:theme="@style/GuideTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,11 +40,28 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.Sp2Activity" />
-        <activity android:name=".activity.LoginHomepage" />
-        <activity android:name=".activity.ForgetActivity" />
-        <activity android:name=".activity.LoginOriginal" />
-        <activity android:name=".activity.RegisterActivity"></activity>
+        <activity android:name=".view.activity.LoginHomePage" />
+        <activity android:name=".view.activity.ForgetActivity" />
+        <activity android:name=".view.activity.LoginOriginal" />
+        <activity android:name=".view.activity.RegisterActivity"></activity>
+        <activity
+            android:name="com.umeng.qq.tencent.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tencent100424468" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.umeng.qq.tencent.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
     </application>
 
 </manifest>

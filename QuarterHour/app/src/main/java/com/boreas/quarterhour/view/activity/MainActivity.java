@@ -1,0 +1,236 @@
+package com.boreas.quarterhour.view.activity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.boreas.quarterhour.R;
+import com.boreas.quarterhour.base.BaseActivity;
+import com.boreas.quarterhour.base.BasePresenter;
+import com.boreas.quarterhour.view.fragment.CrossTalkFragment;
+import com.boreas.quarterhour.view.fragment.FunnyPicturesFragment;
+import com.boreas.quarterhour.view.fragment.RecommendFragment;
+import com.boreas.quarterhour.view.fragment.VideoFragment;
+import com.boreas.quarterhour.utils.MessageEvent;
+import com.bumptech.glide.Glide;
+import com.hjm.bottomtabbar.BottomTabBar;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+
+public class MainActivity extends BaseActivity{
+
+    @BindView(R.id.bottomBar)
+    BottomTabBar bottomBar;
+    @BindView(R.id.icon)
+    ImageView icon;
+    @BindView(R.id.name)
+    TextView Title;
+    @BindView(R.id.sou_s)
+    LinearLayout souS;
+    private SlidingMenu menu;
+    private long exitTime = 0;
+
+    @Subscribe(threadMode = ThreadMode.POSTING,sticky = true)
+    public void ononMoonStickyEvent(MessageEvent messageEvent){
+        String iconurl = messageEvent.getIcon();
+        Glide.with(this).load(iconurl).skipMemoryCache(true).into(icon);
+//        Glide.with(this).load(iconurl).transform(new CornersTransform(this,50)).into(icon);
+    }
+    @Override
+    protected void initDagger() {
+
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected boolean enableSliding() {
+        return false;
+    }
+    @Override
+    protected void initView() {
+
+        bottomBar.init(getSupportFragmentManager())
+                .setImgSize(50, 50)
+                .setFontSize(15)
+                .addTabItem("推荐", R.drawable.tuijian_select, R.drawable.tuijian_default, RecommendFragment.class)
+                .addTabItem("段子", R.drawable.duanzi_select, R.drawable.duanzi_default, CrossTalkFragment.class)
+                .addTabItem("视频", R.drawable.video_select, R.drawable.video_defaults, VideoFragment.class)
+                .addTabItem("趣图", R.drawable.qutusdown, R.drawable.qutuno, FunnyPicturesFragment.class)
+                .isShowDivider(false)
+                .setOnTabChangeListener(new BottomTabBar.OnTabChangeListener() {
+                    @Override
+                    public void onTabChange(int position, String name) {
+                        if (name.equals("推荐")) {
+                            Title.setText("推荐");
+                        } else if (name.equals("段子")) {
+                            Title.setText("段子");
+                        } else if(name.equals("视频")){
+                            Title.setText("视频");
+                        } else{
+                            Title.setText("趣图");
+                        }
+                    }
+                });
+
+
+    }
+
+
+
+    @Override
+    public BasePresenter getPresenter() {
+        return null;
+    }
+
+    /**
+     * 点击事件
+     *
+     * @param view
+     */
+    public void toggleMenu(View view) {
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
+        // configure the SlidingMenu
+        EventBus.getDefault().register(MainActivity.this);
+        menu = new SlidingMenu(this);
+        menu.setMode(SlidingMenu.LEFT);
+        // 设置触摸屏幕的模式
+        /*
+         * SlidingMenu.TOUCHMODE_FULLSCREEN 全屏触摸有效
+         * SlidingMenu.TOUCHMODE_MARGIN 拖拽边缘有效
+         * SlidingMenu.TOUCHMODE_NONE 不响应触摸事件
+         */
+        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
+        menu.setShadowWidthRes(R.dimen.shadow_width);
+        menu.setShadowDrawable(R.color.colorAccent);
+        menu.attachToActivity(this,SlidingMenu.SLIDING_CONTENT,true);
+        // 设置滑动菜单视图的宽度
+        menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+        // 设置渐入渐出效果的值
+        menu.setFadeDegree(0.35f);
+        /**
+         * SLIDING_WINDOW will include the Title/ActionBar in the content
+         * section of the SlidingMenu, while SLIDING_CONTENT does not.
+         */
+        //为侧滑菜单设置布局
+        menu.setMenu(getLeftMenu());
+        icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.toggle();
+            }
+        });
+    }
+
+    public View getLeftMenu() {
+         final int[] imagesId={R.mipmap.slid_aixin,R.mipmap.slid_wujaioxiang,R.mipmap.slid_select,R.mipmap.slid_lingdang};
+         final String[] names={"我的关注","我的收藏","搜索好友","消息通知"};
+        final int[] contents={R.mipmap.slid_more,R.mipmap.slid_more,R.mipmap.slid_more,R.mipmap.slid_more};
+        //从主布局文件绑定的Activity调用另一个布局文件必须调用LayoutInflater
+        LayoutInflater inflater = getLayoutInflater();
+        //得到menu的View
+        View v = inflater.inflate(R.layout.leftmenu, null);
+        ListView listview = (ListView) v.findViewById(R.id.listView1);
+        ImageView touxiang = v.findViewById(R.id.slid_touxiang);
+        touxiang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, LoginHomePage.class));
+            }
+        });
+        BaseAdapter adapter = new BaseAdapter() {
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                // TODO 自动生成的方法存根
+                View layout=View.inflate(MainActivity.this, R.layout.slid_custom_list, null);
+                ImageView face = (ImageView)layout.findViewById(R.id.face);
+                TextView name =(TextView)layout.findViewById(R.id.name);
+                ImageView mark = (ImageView)layout.findViewById(R.id.mark);
+
+                face.setImageResource(imagesId[position]);
+                name.setText(names[position]);
+                mark.setImageResource(contents[position]);
+
+                return layout;
+            }
+
+            @Override
+            public long getItemId(int position) {
+                // TODO 自动生成的方法存根
+                return position;
+            }
+
+            @Override
+            public Object getItem(int position) {
+                // TODO 自动生成的方法存根
+                return names[position];
+            }
+
+            @Override
+            public int getCount() {
+                // TODO 自动生成的方法存根
+                return names.length;
+            }
+        };///new BaseAdapter()
+      listview.setAdapter(adapter);
+      listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+          @Override
+          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+              Toast.makeText(MainActivity.this,"点击了"+position,Toast.LENGTH_SHORT).show();
+          }
+      });
+        return v;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exit();
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    public void exit() {
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            Toast.makeText(getApplicationContext(), "再按一次退出程序",
+                    Toast.LENGTH_SHORT).show();
+            exitTime = System.currentTimeMillis();
+        } else {
+            finish();
+            System.exit(0);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(MainActivity.this);
+    }
+}

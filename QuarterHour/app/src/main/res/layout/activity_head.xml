@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/activity_head"
     android:background="?attr/colorPrimary"
+    android:gravity="center_vertical"
     android:orientation="horizontal"
     android:id="@+id/sou_s">
 

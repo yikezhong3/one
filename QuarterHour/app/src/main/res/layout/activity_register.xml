@@ -10,7 +10,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:background="@mipmap/slid_background1"
-    tools:context="com.boreas.quarterhour.activity.RegisterActivity">
+    tools:context=".view.activity.RegisterActivity">
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="match_parent"

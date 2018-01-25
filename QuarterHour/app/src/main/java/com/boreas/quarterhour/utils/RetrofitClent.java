@@ -3,7 +3,7 @@ package com.boreas.quarterhour.utils;
 import android.os.Environment;
 import android.util.Log;
 
-import com.boreas.quarterhour.myapp.Myapp;
+import com.boreas.quarterhour.view.myapp.Myapp;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.io.File;

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@mipmap/slid_background1"
     android:orientation="vertical"
-    tools:context="com.boreas.quarterhour.activity.LoginHomepage">
+    tools:context=".view.activity.LoginHomePage">
     <LinearLayout
         android:layout_weight="1"
         android:gravity="center"
@@ -43,4 +43,5 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
+
 </LinearLayout>
