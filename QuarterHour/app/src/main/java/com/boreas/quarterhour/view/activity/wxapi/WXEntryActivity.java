@@ -1,6 +1,5 @@
-package com.boreas.quarterhour.wxapi;
+package com.boreas.quarterhour.view.activity.wxapi;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.boreas.quarterhour.R;

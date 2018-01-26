@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="16dp"
     android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
     android:paddingRight="16dp"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
     android:background="@mipmap/slid_background1"
     tools:context=".view.activity.LoginOriginal">
     <LinearLayout
         android:layout_weight="1"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <ImageView
@@ -52,6 +54,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
+            android:singleLine="true"
+            android:inputType="phone"
+            android:maxLength="11"
             android:background="@color/colorWhite"
             android:hint="账号"
             android:paddingBottom="5dp"
@@ -60,12 +65,15 @@
 
         <EditText
             android:id="@+id/userpass"
+            android:layout_marginTop="1dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
+            android:singleLine="true"
             android:layout_marginRight="50dp"
             android:background="@color/colorWhite"
             android:hint="密码"
+            android:inputType="numberPassword"
             android:paddingBottom="5dp"
             android:paddingLeft="16dp"
             android:paddingTop="5dp" />

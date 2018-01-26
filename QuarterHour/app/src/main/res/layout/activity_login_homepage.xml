@@ -4,9 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
     android:background="@mipmap/slid_background1"
     android:orientation="vertical"
     tools:context=".view.activity.LoginHomePage">
+    <ImageView
+        android:id="@+id/back"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:src="@mipmap/slid_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <LinearLayout
         android:layout_weight="1"
         android:gravity="center"
