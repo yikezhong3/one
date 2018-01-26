@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.boreas.quarterhour.R;
 import com.boreas.quarterhour.base.BaseActivity;
 import com.boreas.quarterhour.base.BasePresenter;
+import com.boreas.quarterhour.utils.CornersTransform;
 import com.boreas.quarterhour.view.fragment.CrossTalkFragment;
 import com.boreas.quarterhour.view.fragment.FunnyPicturesFragment;
 import com.boreas.quarterhour.view.fragment.RecommendFragment;
@@ -29,6 +30,9 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,12 +50,20 @@ public class MainActivity extends BaseActivity{
     LinearLayout souS;
     private SlidingMenu menu;
     private long exitTime = 0;
+    private String iconurl;
+    private String username;
+    private TextView username1;
+    private ImageView touxiang;
+
 
     @Subscribe(threadMode = ThreadMode.POSTING,sticky = true)
     public void ononMoonStickyEvent(MessageEvent messageEvent){
-        String iconurl = messageEvent.getIcon();
-        Glide.with(this).load(iconurl).skipMemoryCache(true).into(icon);
-//        Glide.with(this).load(iconurl).transform(new CornersTransform(this,50)).into(icon);
+        iconurl = messageEvent.getIcon();
+        username = messageEvent.getName();
+     // Glide.with(this).load(iconurl).skipMemoryCache(true).into(icon);
+       Glide.with(this).load(iconurl).transform(new CornersTransform(this,30)).into(icon);
+        Glide.with(MainActivity.this).load(iconurl).error(R.mipmap.slid_touxiang).transform(new CornersTransform(MainActivity.this,30)).into(touxiang);
+        username1.setText(""+ username);
     }
     @Override
     protected void initDagger() {
@@ -115,6 +127,7 @@ public class MainActivity extends BaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+
         // configure the SlidingMenu
         EventBus.getDefault().register(MainActivity.this);
         menu = new SlidingMenu(this);
@@ -156,11 +169,17 @@ public class MainActivity extends BaseActivity{
         //得到menu的View
         View v = inflater.inflate(R.layout.leftmenu, null);
         ListView listview = (ListView) v.findViewById(R.id.listView1);
-        ImageView touxiang = v.findViewById(R.id.slid_touxiang);
+        touxiang = v.findViewById(R.id.slid_touxiang);
+        username1 = v.findViewById(R.id.username);
+
+
+
+
         touxiang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, LoginHomePage.class));
+
             }
         });
         BaseAdapter adapter = new BaseAdapter() {
@@ -233,4 +252,6 @@ public class MainActivity extends BaseActivity{
         super.onDestroy();
         EventBus.getDefault().unregister(MainActivity.this);
     }
+
+
 }

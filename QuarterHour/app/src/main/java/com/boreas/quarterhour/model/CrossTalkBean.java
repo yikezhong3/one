@@ -32,6 +32,7 @@ public class CrossTalkBean {
 
     public void setCode(String code) {
         this.code = code;
+
     }
 
     public List<DataBean> getData() {

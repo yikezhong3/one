@@ -2,6 +2,7 @@ package com.boreas.quarterhour.model.api;
 
 import com.boreas.quarterhour.model.CrossTalkBean;
 import com.boreas.quarterhour.model.CarouselModel;
+import com.boreas.quarterhour.model.LoginSuccesBean;
 import com.boreas.quarterhour.model.Splash;
 
 import io.reactivex.Flowable;
@@ -24,4 +25,6 @@ public interface ApiService {
     @GET("quarter/getJokes")
     Flowable<CrossTalkBean> getDzLiebiao(@Query("appVersion") String appVersion, @Query("source") String source, @Query("page") String page);
 
+    @GET("user/login")
+    Flowable<LoginSuccesBean> getLoginSuccess(@Query("mobile") String mobile,@Query("password") String password);
 }

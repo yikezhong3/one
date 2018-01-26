@@ -47,6 +47,7 @@
             android:src="@mipmap/login_photo" />
 
         <EditText
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
@@ -58,6 +59,7 @@
             android:paddingTop="5dp" />
 
         <EditText
+            android:id="@+id/userpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"

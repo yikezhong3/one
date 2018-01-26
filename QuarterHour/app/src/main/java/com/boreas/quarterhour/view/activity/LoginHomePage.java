@@ -63,6 +63,8 @@ public class LoginHomePage extends BaseActivity {
         switch (view.getId()) {
             case R.id.login_wx:
                 Toast.makeText(this,"wx登录",Toast.LENGTH_SHORT).show();
+                UMShareAPI.get(LoginHomePage.this).getPlatformInfo(LoginHomePage.this,
+                        SHARE_MEDIA.WEIXIN,wxauthListener);
                 break;
             case R.id.login_qq:
                 UMShareAPI.get(LoginHomePage.this).getPlatformInfo(LoginHomePage.this,
@@ -84,14 +86,40 @@ public class LoginHomePage extends BaseActivity {
         @Override
         public void onStart(SHARE_MEDIA platform) {
             //授权开始的回调
-            startActivity(new Intent(LoginHomePage.this,MainActivity.class));
+//            startActivity(new Intent(LoginHomePage.this,MainActivity.class));
 
         }
         @Override
         public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
           //获取头像和名字
             String icon = data.get("iconurl");
-            String name =  data.get("screen_name");
+            String name =  data.get("screen_name").toString();
+            EventBus.getDefault().postSticky(new MessageEvent(icon,name));
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, int action, Throwable t) {
+            Toast.makeText(LoginHomePage.this, "Authorize fail", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform, int action) {
+            Toast.makeText( LoginHomePage.this, "Authorize cancel", Toast.LENGTH_SHORT).show();
+        }
+    };
+ //第三方登录的监听事件
+    private UMAuthListener wxauthListener = new UMAuthListener() {
+        @Override
+        public void onStart(SHARE_MEDIA platform) {
+            //授权开始的回调
+//            startActivity(new Intent(LoginHomePage.this,MainActivity.class));
+
+        }
+        @Override
+        public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
+          //获取头像和名字
+            String icon = data.get("iconurl");
+            String name =  data.get("screen_name").toString();
             EventBus.getDefault().postSticky(new MessageEvent(icon,name));
         }
 
