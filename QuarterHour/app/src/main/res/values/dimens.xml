@@ -15,4 +15,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="slidingmenu_offset">60dp</dimen>
     <dimen name="shadow_width">5dp</dimen>
+    <dimen name="headerLeft">16dp</dimen>
+    <dimen name="headerTop">16dp</dimen>
 </resources>
