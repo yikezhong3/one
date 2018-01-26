@@ -81,19 +81,8 @@ public class LoginOriginal extends BaseActivity implements LoginSuccesView {
             case R.id.lgoin:
                 String name = username.getText().toString().trim();
                 String pass = userpass.getText().toString().trim();
-
-                 boolean click=true;
-                if(click){//第一次单击，初始化为本次单击的时间
                     loginSuccessPresenter = new LoginSuccessPresenter(this);
                     loginSuccessPresenter.getLoginUrl(Api.LoginUrl, name, pass);
-                    click=false;
-                    try {
-                        Thread.sleep(3000);
-                        click=true;
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
                 break;
             case R.id.gorget_password:
                 startActivity(new Intent(this, ForgetActivity.class));
