@@ -31,6 +31,7 @@
             android:gravity="center"
             />
         <ImageView
+            android:id="@+id/issue"
             android:layout_width="@dimen/pen_width"
             android:layout_height="@dimen/pen_height"
             android:src="@drawable/bianji"

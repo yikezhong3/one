@@ -4,4 +4,6 @@
     <string name="SCtitle">我的收藏</string>
     <string name="HStitle">搜索好友</string>
     <string name="TZtitle">消息通知</string>
+    <string name="cancel">是</string>
+    <string name="submit">否</string>
 </resources>

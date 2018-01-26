@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    tools:context="com.boreas.quarterhour.view.activity.PropertyActivity">
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/Layout_top"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:orientation="horizontal">
+        <include android:id="@+id/shopcar_head" layout="@layout/elife_head"></include>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/Content_Layout"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        >
+
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:background="@drawable/editview_shape"
+                android:gravity="top" android:hint="发表 您的段子有趣故事..."
+                android:id="@+id/editText1"
+                android:layout_height="120dp"
+                android:layout_margin="12dp"
+                android:layout_width="fill_parent"
+                android:maxLength="500"
+                android:singleLine="false"
+                android:textColor="#1eb2ff"
+                android:textSize="15sp"
+                android:padding="10dp"/>
+
+            <GridView
+                android:background="#a6f1e4f4"
+                android:columnWidth="90dp"
+                android:horizontalSpacing="5dp"
+                android:id="@+id/gridView1"
+                android:layout_height="200dp"
+                android:layout_margin="10dp"
+                android:layout_width="fill_parent"
+                android:numColumns="4"
+                android:verticalSpacing="5dp">
+            </GridView>
+
+            <TextView
+                android:layout_marginTop="@dimen/headerTop"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:text="(长按图片可以删除已添加图片)"
+                android:textColor="#1eb2ff"/>
+
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_marginTop="@dimen/headerTop"
+            android:id="@+id/Layout_bottom"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/kuang"
+                android:text="发布"
+                android:textColor="#ffffff"
+                android:textSize="15sp"></Button>
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_toRightOf="@id/button1"
+                android:background="@drawable/kuang"
+                android:text="取消"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

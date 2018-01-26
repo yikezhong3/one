@@ -18,11 +18,11 @@ import com.boreas.quarterhour.R;
 import com.boreas.quarterhour.base.BaseActivity;
 import com.boreas.quarterhour.base.BasePresenter;
 import com.boreas.quarterhour.utils.CornersTransform;
+import com.boreas.quarterhour.utils.MessageEvent;
 import com.boreas.quarterhour.view.fragment.CrossTalkFragment;
 import com.boreas.quarterhour.view.fragment.FunnyPicturesFragment;
 import com.boreas.quarterhour.view.fragment.RecommendFragment;
 import com.boreas.quarterhour.view.fragment.VideoFragment;
-import com.boreas.quarterhour.utils.MessageEvent;
 import com.bumptech.glide.Glide;
 import com.hjm.bottomtabbar.BottomTabBar;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -31,14 +31,12 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
 public class MainActivity extends BaseActivity{
+
 
     @BindView(R.id.bottomBar)
     BottomTabBar bottomBar;
@@ -48,6 +46,8 @@ public class MainActivity extends BaseActivity{
     TextView Title;
     @BindView(R.id.sou_s)
     LinearLayout souS;
+    @BindView(R.id.issue)
+    ImageView is;
     private SlidingMenu menu;
     private long exitTime = 0;
     private String iconurl;
@@ -81,7 +81,12 @@ public class MainActivity extends BaseActivity{
     }
     @Override
     protected void initView() {
-
+        is.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this,"推荐",Toast.LENGTH_SHORT).show();
+            }
+        });
         bottomBar.init(getSupportFragmentManager())
                 .setImgSize(50, 50)
                 .setFontSize(15)
@@ -95,12 +100,36 @@ public class MainActivity extends BaseActivity{
                     public void onTabChange(int position, String name) {
                         if (name.equals("推荐")) {
                             Title.setText("推荐");
+                            is.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Toast.makeText(MainActivity.this,"推荐",Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         } else if (name.equals("段子")) {
                             Title.setText("段子");
+                            is.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Toast.makeText(MainActivity.this,"段子",Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         } else if(name.equals("视频")){
                             Title.setText("视频");
+                            is.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Toast.makeText(MainActivity.this,"视频",Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         } else{
                             Title.setText("趣图");
+                            is.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    startActivity(new Intent(MainActivity.this,PropertyActivity.class));
+                                }
+                            });
                         }
                     }
                 });

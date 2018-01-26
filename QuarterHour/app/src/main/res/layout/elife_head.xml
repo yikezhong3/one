@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/activity_head"
+    android:background="?attr/colorPrimary"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/head_back"
+        android:layout_width="@dimen/icon_width"
+        android:layout_height="@dimen/icon_height"
+        android:layout_marginLeft="@dimen/headerLeft"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="@dimen/headerTop"
+        android:src="@drawable/backcall" />
+    <TextView
+        android:id="@+id/radio_text"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="@dimen/activity_head"
+        android:textSize="@dimen/text_size_common"
+        android:textColor="#fff"
+        android:gravity="center"
+        />
+    <ImageView
+        android:layout_width="@dimen/pen_width"
+        android:layout_height="@dimen/pen_height"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"></ImageView>
+
+
+</LinearLayout>
