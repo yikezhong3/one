@@ -17,6 +17,7 @@ import com.boreas.quarterhour.model.api.Api;
 import com.boreas.quarterhour.presneter.LoginSuccessPresenter;
 import com.boreas.quarterhour.view.LoginSuccesView;
 
+import java.lang.reflect.Proxy;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -79,15 +80,19 @@ public class LoginOriginal extends BaseActivity implements LoginSuccesView {
                 startActivity(new Intent(this, RegisterActivity.class));
                 break;
             case R.id.lgoin:
+                // 获取名字和密码
                 String name = username.getText().toString().trim();
                 String pass = userpass.getText().toString().trim();
-                    loginSuccessPresenter = new LoginSuccessPresenter(this);
-                    loginSuccessPresenter.getLoginUrl(Api.LoginUrl, name, pass);
+                //发送请求
+               loginSuccessPresenter = new LoginSuccessPresenter(this);
+               loginSuccessPresenter.getLoginUrl(Api.LoginUrl, name, pass);
                 break;
             case R.id.gorget_password:
                 startActivity(new Intent(this, ForgetActivity.class));
                 break;
             case R.id.tourist:
+                Toast.makeText(this,"游客登录直接返回到主页面",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this,MainActivity.class));
                 break;
         }
     }

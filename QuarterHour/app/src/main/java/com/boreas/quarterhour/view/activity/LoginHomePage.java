@@ -31,6 +31,8 @@ public class LoginHomePage extends BaseActivity {
     ImageView loginQq;
     @BindView(R.id.login_other)
     TextView loginOther;
+    @BindView(R.id.back)
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,29 +60,34 @@ public class LoginHomePage extends BaseActivity {
         return null;
     }
 
-    @OnClick({R.id.login_wx, R.id.login_qq, R.id.login_other})
+    @OnClick({R.id.login_wx, R.id.login_qq, R.id.login_other,R.id.back})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.login_wx:
-                Toast.makeText(this,"wx登录",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "wx登录", Toast.LENGTH_SHORT).show();
                 UMShareAPI.get(LoginHomePage.this).getPlatformInfo(LoginHomePage.this,
-                        SHARE_MEDIA.WEIXIN,wxauthListener);
+                        SHARE_MEDIA.WEIXIN, wxauthListener);
                 break;
             case R.id.login_qq:
                 UMShareAPI.get(LoginHomePage.this).getPlatformInfo(LoginHomePage.this,
-                                                             SHARE_MEDIA.QQ,umAuthListener);
+                        SHARE_MEDIA.QQ, umAuthListener);
                 break;
             case R.id.login_other:
-                startActivity(new Intent(this,LoginOriginal.class));
+                startActivity(new Intent(this, LoginOriginal.class));
+                break;
+            case R.id.back:
+                finish();
                 break;
         }
     }
+
     //qq登录的回调方法
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
+
     //第三方登录的监听事件
     private UMAuthListener umAuthListener = new UMAuthListener() {
         @Override
@@ -89,12 +96,13 @@ public class LoginHomePage extends BaseActivity {
 //            startActivity(new Intent(LoginHomePage.this,MainActivity.class));
 
         }
+
         @Override
         public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
-          //获取头像和名字
+            //获取头像和名字
             String icon = data.get("iconurl");
-            String name =  data.get("screen_name").toString();
-            EventBus.getDefault().postSticky(new MessageEvent(icon,name));
+            String name = data.get("screen_name").toString();
+            EventBus.getDefault().postSticky(new MessageEvent(icon, name));
         }
 
         @Override
@@ -104,10 +112,10 @@ public class LoginHomePage extends BaseActivity {
 
         @Override
         public void onCancel(SHARE_MEDIA platform, int action) {
-            Toast.makeText( LoginHomePage.this, "Authorize cancel", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginHomePage.this, "Authorize cancel", Toast.LENGTH_SHORT).show();
         }
     };
- //第三方登录的监听事件
+    //第三方登录的监听事件
     private UMAuthListener wxauthListener = new UMAuthListener() {
         @Override
         public void onStart(SHARE_MEDIA platform) {
@@ -115,12 +123,13 @@ public class LoginHomePage extends BaseActivity {
 //            startActivity(new Intent(LoginHomePage.this,MainActivity.class));
 
         }
+
         @Override
         public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
-          //获取头像和名字
+            //获取头像和名字
             String icon = data.get("iconurl");
-            String name =  data.get("screen_name").toString();
-            EventBus.getDefault().postSticky(new MessageEvent(icon,name));
+            String name = data.get("screen_name").toString();
+            EventBus.getDefault().postSticky(new MessageEvent(icon, name));
         }
 
         @Override
@@ -130,7 +139,7 @@ public class LoginHomePage extends BaseActivity {
 
         @Override
         public void onCancel(SHARE_MEDIA platform, int action) {
-            Toast.makeText( LoginHomePage.this, "Authorize cancel", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginHomePage.this, "Authorize cancel", Toast.LENGTH_SHORT).show();
         }
     };
 

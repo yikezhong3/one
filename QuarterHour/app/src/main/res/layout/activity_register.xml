@@ -9,6 +9,8 @@
     android:paddingBottom="16dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
     android:background="@mipmap/slid_background1"
     tools:context=".view.activity.RegisterActivity">
     <LinearLayout
@@ -53,6 +55,9 @@
             android:layout_marginRight="50dp"
             android:background="@color/colorWhite"
             android:hint="请输入手机号"
+            android:singleLine="true"
+            android:maxLength="11"
+            android:inputType="phone"
             android:paddingBottom="5dp"
             android:paddingLeft="16dp"
             android:paddingTop="5dp" />
@@ -62,6 +67,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
+            android:layout_marginTop="1dp"
+            android:singleLine="true"
+            android:inputType="numberPassword"
             android:background="@color/colorWhite"
             android:hint="输入大小写和数字，密码不能超过八位"
             android:paddingBottom="5dp"
