@@ -10,11 +10,12 @@
             android:id="@+id/adapter_dzicon"
             android:layout_width="@dimen/icon_width"
             android:layout_height="@dimen/icon_height"
-            android:src="@drawable/icon"
+            android:src="@mipmap/slid_touxiang"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+
             />
         <LinearLayout
             android:layout_toRightOf="@+id/adapter_dzicon"

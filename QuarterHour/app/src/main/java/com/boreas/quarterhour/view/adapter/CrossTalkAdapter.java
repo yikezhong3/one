@@ -1,16 +1,19 @@
 package com.boreas.quarterhour.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.boreas.quarterhour.R;
 import com.boreas.quarterhour.model.CrossTalkBean;
+import com.boreas.quarterhour.view.activity.PersonaldetailsActivity;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -19,10 +22,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by Administrator on 2018/1/20.
+ * Created by Administrator on 2018/1/26.
  */
 
-public class CrossTalkAdapter extends RecyclerView.Adapter<CrossTalkAdapter.IHoldView> {
+public class CrossTalkAdapter extends RecyclerView.Adapter<CrossTalkAdapter.IHoldView>{
     Context context;
     List<CrossTalkBean.DataBean> dzBean;
     public CrossTalkAdapter(Context context, List<CrossTalkBean.DataBean> dzBean) {
@@ -31,7 +34,7 @@ public class CrossTalkAdapter extends RecyclerView.Adapter<CrossTalkAdapter.IHol
     }
     @Override
     public IHoldView onCreateViewHolder(ViewGroup parent, int viewType) {
-      View view = LayoutInflater.from(context).inflate(R.layout.adapter_dz1,null);
+        View view = LinearLayout.inflate(context, R.layout.adapter_dz1, null);
         return new IHoldView(view);
     }
 
@@ -39,26 +42,30 @@ public class CrossTalkAdapter extends RecyclerView.Adapter<CrossTalkAdapter.IHol
     public void onBindViewHolder(IHoldView holder, int position) {
         holder.dzname.setText(dzBean.get(position).getContent());
         holder.dztime.setText(dzBean.get(position).getCreateTime());
-       holder.dztext.setText(dzBean.get(position).getUser().getNickname());
+        holder.dztext.setText(dzBean.get(position).getUser().getNickname());
         Glide.with(context).load(dzBean.get(position).getUser().getIcon());
-       /* holder.dzicon.setOnClickListener(new View.OnClickListener() {
+        holder.dztime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(context, PersonaldetailsActivity.class);
+                context.startActivity(intent);
             }
-        });*/
-       holder.itemView.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
+        });
+        holder.dzname.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, PersonaldetailsActivity.class);
+                context.startActivity(intent);
+            }
+        });
+        holder.dzicon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, PersonaldetailsActivity.class);
+                context.startActivity(intent);
+            }
+        });
 
-           }
-       });
-       holder.dzjiadan.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Toast.makeText(context, "加号", Toast.LENGTH_SHORT).show();
-           }
-       });
     }
 
     @Override
@@ -80,6 +87,12 @@ public class CrossTalkAdapter extends RecyclerView.Adapter<CrossTalkAdapter.IHol
         public IHoldView(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
+        dzjiadan.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "加号", Toast.LENGTH_SHORT).show();
+                }
+            });
 
         }
     }
