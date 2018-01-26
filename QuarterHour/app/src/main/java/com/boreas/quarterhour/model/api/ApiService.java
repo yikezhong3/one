@@ -24,7 +24,7 @@ public interface ApiService {
     //https://www.zhaoapi.cn/quarter/getJokes?source=android&appVersion=101&page=10
     @GET("quarter/getJokes")
     Flowable<CrossTalkBean> getDzLiebiao(@Query("appVersion") String appVersion, @Query("source") String source, @Query("page") String page);
-
+    //登录
     @GET("user/login")
     Flowable<LoginSuccesBean> getLoginSuccess(@Query("mobile") String mobile,@Query("password") String password);
 }
