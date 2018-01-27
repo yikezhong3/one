@@ -3,6 +3,7 @@ package com.boreas.quarterhour.model.api;
 import com.boreas.quarterhour.model.CrossTalkBean;
 import com.boreas.quarterhour.model.CarouselModel;
 import com.boreas.quarterhour.model.LoginSuccesBean;
+import com.boreas.quarterhour.model.RegisterBean;
 import com.boreas.quarterhour.model.RMBean;
 import com.boreas.quarterhour.model.Splash;
 
@@ -31,6 +32,10 @@ public interface ApiService {
     //登录
     @GET("user/login")
     Flowable<LoginSuccesBean> getLoginSuccess(@Query("mobile") String mobile,@Query("password") String password);
+
+ //注册
+    @GET("quarter/register")
+    Flowable<RegisterBean> getRegisterSuccess(@Query("regType") int regType, @Query("mobile") String mobile, @Query("password") String password);
 
     @GET("quarter/getHotVideos")
     Flowable<RMBean> getRMdata(@QueryMap Map<String, String> map);

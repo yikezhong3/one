@@ -1,7 +1,8 @@
-package com.boreas.quarterhour.model.api;
+package com.boreas.quarterhour.model;
 
 import com.boreas.quarterhour.model.LoginSuccesBean;
 import com.boreas.quarterhour.model.LoginSuccessModel;
+import com.boreas.quarterhour.model.api.ApiService;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import io.reactivex.Flowable;
