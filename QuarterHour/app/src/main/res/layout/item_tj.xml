@@ -16,10 +16,10 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:text="title"/>
-    <ImageView
+    <include
+        layout="@layout/simple_player_view_player"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:src="@mipmap/ic_launcher"/>
+        android:layout_height="180dp"/>
     <TextView
         android:id="@+id/repin1"
         android:layout_marginTop="10dp"

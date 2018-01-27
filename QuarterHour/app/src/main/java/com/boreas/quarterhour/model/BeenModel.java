@@ -4,6 +4,8 @@ import com.boreas.quarterhour.model.api.Api;
 import com.boreas.quarterhour.model.api.ApiService;
 import com.boreas.quarterhour.utils.RetrofitClent;
 
+import java.util.Map;
+
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -41,7 +43,33 @@ public class BeenModel {
                     }
                 });
     }
+    public void getRMData(final RMDataBack dataBack, Map<String, String> map){
+        ApiService apiService = RetrofitClent.getRetrofitClientInstance().getApiService(ApiService.class, Api.lunbo);
+        Flowable<RMBean> flowable = apiService.getRMdata(map);
+        flowable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSubscriber<RMBean>() {
+                    @Override
+                    public void onNext(RMBean bean) {
+                        dataBack.callBack(bean);
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
     public interface SendData{
         void send(com.boreas.quarterhour.model.CarouselModel o);
+    }
+    public interface RMDataBack{
+        void callBack(RMBean bean);
     }
 }

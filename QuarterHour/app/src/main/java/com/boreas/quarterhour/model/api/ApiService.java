@@ -3,11 +3,15 @@ package com.boreas.quarterhour.model.api;
 import com.boreas.quarterhour.model.CrossTalkBean;
 import com.boreas.quarterhour.model.CarouselModel;
 import com.boreas.quarterhour.model.LoginSuccesBean;
+import com.boreas.quarterhour.model.RMBean;
 import com.boreas.quarterhour.model.Splash;
+
+import java.util.Map;
 
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 /**
  * Created by Dell on 2018/1/19.
@@ -27,4 +31,7 @@ public interface ApiService {
     //登录
     @GET("user/login")
     Flowable<LoginSuccesBean> getLoginSuccess(@Query("mobile") String mobile,@Query("password") String password);
+
+    @GET("quarter/getHotVideos")
+    Flowable<RMBean> getRMdata(@QueryMap Map<String, String> map);
 }
