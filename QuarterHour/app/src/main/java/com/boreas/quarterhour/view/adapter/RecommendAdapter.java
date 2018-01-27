@@ -154,7 +154,7 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 }
 
-class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
     private Context context;
     private List<RMBean.DataBean> rmLists;
     //private static List<ImageView> imageViews = new ArrayList<>();
@@ -209,19 +209,11 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     }
                 }
             });
-           /* viewHolder.timg.setOnClickListener(this);
+            viewHolder.timg.setOnClickListener(this);
             viewHolder.banned.setOnClickListener(this);
-            viewHolder.warning.setOnClickListener(this);*/
+            viewHolder.warning.setOnClickListener(this);
             viewHolder.nickname.setText(userBeans.get(0).getNickname());
             String url = "http://ic.snssdk.com/neihan/video/playback/?video_id=3037a89e9e3f44338e2c55e0927e43f7&quality=480p&line=0&is_gif=0&device_platform=.mp4";
-
-            /*new PlayerView((Activity) context)
-                    .setTitle("什么")
-                    .setScaleType(PlayStateParams.fitparent)
-                    .hideMenu(true)
-                    .forbidTouch(false)
-                    .setPlaySource(url)
-                    .startPlay();*/
 
             viewHolder.createTime.setText(arrs[0] + " " + arrs[1]);
             viewHolder.title.setText(rmLists.get(position).getWorkDesc());
@@ -235,7 +227,22 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return rmLists == null ? 0 : rmLists.size();
     }
 
-    //打开
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.timg:
+                Toast.makeText(context,"点击了1",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.warning:
+                Toast.makeText(context,"点击了2",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.banned:
+                Toast.makeText(context,"点击了3",Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
+/*    //打开
     private void showOpenAnim(TJitemViewHolder viewHolder, int dp) {
         viewHolder.timg.setVisibility(View.VISIBLE);
         viewHolder.banned.setVisibility(View.VISIBLE);
@@ -336,7 +343,7 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         float density = context.getResources()
                 .getDisplayMetrics().density;
         return (int) (density * value + 0.5f);
-    }
+    }*/
 
     class TJitemViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.userHeadImage)
