@@ -1,8 +1,7 @@
 package com.boreas.quarterhour.presneter;
 
 import com.boreas.quarterhour.model.LoginSuccesBean;
-import com.boreas.quarterhour.model.LoginSuccessModel;
-import com.boreas.quarterhour.model.api.LoginSuccessModelBack;
+import com.boreas.quarterhour.model.LoginSuccessModelBack;
 import com.boreas.quarterhour.view.LoginSuccesView;
 
 /**

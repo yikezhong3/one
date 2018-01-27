@@ -3,6 +3,7 @@ package com.boreas.quarterhour.model.api;
 import com.boreas.quarterhour.model.CrossTalkBean;
 import com.boreas.quarterhour.model.CarouselModel;
 import com.boreas.quarterhour.model.LoginSuccesBean;
+import com.boreas.quarterhour.model.RegisterBean;
 import com.boreas.quarterhour.model.RMBean;
 import com.boreas.quarterhour.model.Splash;
 import com.boreas.quarterhour.model.VideoHotBean;
@@ -36,6 +37,10 @@ public interface ApiService {
     //热门
     @GET("quarter/getHotVideos?token=F3768ABA31902C1D56B60F25708B9BCD&source=android&appVersion=101&page=1")
     Observable<VideoHotBean> getVideoHot();
+
+ //注册
+    @GET("quarter/register")
+    Flowable<RegisterBean> getRegisterSuccess(@Query("regType") int regType, @Query("mobile") String mobile, @Query("password") String password);
 
     @GET("quarter/getHotVideos")
     Flowable<RMBean> getRMdata(@QueryMap Map<String, String> map);
