@@ -55,8 +55,12 @@ dependencies {
     implementation project(':library')
     compile 'com.jaeger.statusbaruitl:library:1.0.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
-//设置头像圆角的依赖
+    //设置头像圆角的依赖
     compile 'jp.wasabeef:glide-transformations:2.0.0'
+    //tablayout
+    compile 'com.android.support:design:25.3.1'
+    //视频播放器
+    compile 'fm.jiecao:jiecaovideoplayer:5.5.2'
     compile 'com.dou361.ijkplayer:jjdxm-ijkplayer:1.0.5'
 
 }

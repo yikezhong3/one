@@ -11,4 +11,5 @@ public class Api {
     public static final String DzLieBiao = "https://www.zhaoapi.cn/";
     public static final String LoginUrl = "https://www.zhaoapi.cn";
 
+    public static final  String VIDEO_HOT = "https://www.zhaoapi.cn";
 }
