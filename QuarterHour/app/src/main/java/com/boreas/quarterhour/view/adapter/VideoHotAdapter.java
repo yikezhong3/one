@@ -49,8 +49,9 @@ public class VideoHotAdapter extends XRecyclerView.Adapter<VideoHotAdapter.ViewH
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                VideoHotBean.DataBean dataBean = list.get(position);
                 Intent intent = new Intent(context, VideoHotDetailsActivity.class);
-//                intent.putExtra("bean", (Parcelable) list.get(position));
+//                intent.putStringArrayListExtra("",dataBean);
                 context.startActivity(intent);
             }
         });
