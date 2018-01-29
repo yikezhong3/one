@@ -1,12 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/colorWhite"
     tools:context="com.boreas.quarterhour.view.activity.VideoHotDetailsActivity">
+
+    <RelativeLayout
+        android:id="@+id/video_hot_details_linearlayout"
+        android:layout_width="match_parent"
+        android:background="#F0F0F0"
+        android:layout_height="40dp">
+
+        <ImageView
+            android:id="@+id/video_hot_details_iv_fanhui"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/video_fanhui"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"/>
+
+        <ImageView
+            android:id="@+id/video_hot_details_iv_like"
+            android:layout_alignLeft="@+id/video_hot_details_iv_fanhui"
+            android:layout_width="23dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/video_like"
+            android:layout_gravity="center"
+            android:layout_marginLeft="40dp"/>
+
+        <ImageView
+            android:id="@+id/video_hot_details_iv_nolike"
+            android:layout_alignLeft="@+id/video_hot_details_iv_like"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/video_nolike"
+            android:layout_gravity="center"
+            android:layout_marginLeft="40dp"/>
+
+        <ImageView
+            android:id="@+id/video_hot_details_iv_fenxiang"
+            android:layout_alignLeft="@+id/video_hot_details_iv_nolike"
+            android:layout_width="22dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/video_fenxiang"
+            android:layout_gravity="center"
+            android:layout_marginLeft="40dp"/>
+
+        <ImageView
+            android:id="@+id/video_hot_details_iv_touxiang"
+            android:layout_alignParentRight="true"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:nextFocusRight="@mipmap/video_fanhui"
+            android:src="@mipmap/a" />
+
+    </RelativeLayout>
 
     <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
         android:id="@+id/video_hot_details_videoplayer"
@@ -15,4 +73,50 @@
 
     </fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard>
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/video_hot_details_title"
+        android:layout_width="match_parent"
+        android:background="#F0F0F0"
+        android:layout_height="35dp"
+        android:paddingLeft="10px"
+        android:textStyle="bold"
+        android:text="dssadsa"
+        android:textColor="#555555"
+        android:textSize="15dp"
+        android:gravity="center_vertical"/>
+
+    <TextView
+        android:id="@+id/video_hot_details_numandtime"
+        android:layout_width="match_parent"
+        android:background="#F0F0F0"
+        android:layout_height="35dp"
+        android:paddingLeft="12px"
+        android:text="dssadsa"
+        android:textColor="#555555"
+        android:textSize="10dp"
+        android:gravity="center_vertical"/>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/a"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="#DEDEDE"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="拿起手机速来抢个沙发吧！~"
+            android:layout_gravity="center"
+            android:textColor="#555555"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+</LinearLayout>

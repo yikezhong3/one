@@ -2,6 +2,7 @@ package com.boreas.quarterhour.view.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +41,7 @@ public class VideoHotAdapter extends XRecyclerView.Adapter<VideoHotAdapter.ViewH
     }
 
     @Override
-    public void onBindViewHolder(VideoHotAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(VideoHotAdapter.ViewHolder holder, final int position) {
         Glide.with(context).load(list.get(position).getCover()).placeholder(R.mipmap.ic_launcher).error(R.mipmap.a).into(holder.imageView);
 //        holder.textView.setText(list.get(position).getCreateTime());
         System.out.println("list = " + list.get(position).getCover());
@@ -48,7 +49,9 @@ public class VideoHotAdapter extends XRecyclerView.Adapter<VideoHotAdapter.ViewH
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context , VideoHotDetailsActivity.class));
+                Intent intent = new Intent(context, VideoHotDetailsActivity.class);
+//                intent.putExtra("bean", (Parcelable) list.get(position));
+                context.startActivity(intent);
             }
         });
     }
