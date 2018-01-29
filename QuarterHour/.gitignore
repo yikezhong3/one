@@ -1,4 +1,3 @@
-
 /.gradle/
 /.idea/
 /app/build/
@@ -7,3 +6,4 @@
 /library/library.iml
 /library/build/
 /app/build.gradle
+*.iml

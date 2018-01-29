@@ -1,7 +1,6 @@
 package com.boreas.quarterhour.view.fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
-import android.telecom.Call;
 import android.util.Log;
 import android.view.View;
 
@@ -11,7 +10,7 @@ import com.boreas.quarterhour.base.BasePresenter;
 import com.boreas.quarterhour.model.CrossTalkBean;
 import com.boreas.quarterhour.presneter.CarousePresenter;
 import com.boreas.quarterhour.view.CrossTalkView;
-import com.boreas.quarterhour.view.adapter.CrossTalkAdapter;
+import com.boreas.quarterhour.view.adapter.CrossTalkAdapterr;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ public class CrossTalkFragment extends BaseFragment implements CrossTalkView {
 
     private List<CrossTalkBean.DataBean> list = new ArrayList<>();;
     private XRecyclerView dz_xrecycler;
-    private CrossTalkAdapter crossTalkAdapter;
+    private CrossTalkAdapterr crossTalkAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -60,7 +59,7 @@ public class CrossTalkFragment extends BaseFragment implements CrossTalkView {
     @Override
     public void success(CrossTalkBean crossTalkBean) {
         list= crossTalkBean.getData();
-        crossTalkAdapter = new CrossTalkAdapter(getActivity(), list);
+        crossTalkAdapter = new CrossTalkAdapterr(getActivity(), list);
         Log.i("===========", crossTalkBean.getData().toString());
         dz_xrecycler.setAdapter(crossTalkAdapter);
     }
