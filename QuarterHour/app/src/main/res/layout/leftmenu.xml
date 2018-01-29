@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:orientation="vertical"
+    xmlns:lh2="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_weight="1"
@@ -67,11 +68,19 @@
                 android:text="夜间模式"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <ImageView
+            <com.boreas.quarterhour.utils.DrawableSwitch
                 android:layout_weight="1"
-                android:src="@mipmap/slid_switch_off"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:id="@+id/drawableSwitch"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                lh2:circleColor="#F9F9F9"
+                lh2:isSwitchOn="false"
+                lh2:radius="20dp"
+                lh2:switchOffColor="#D8D8D8"
+                lh2:switchOnColor="#6AB344"
+                lh2:textColor="#1C1C0F" />   />
         </LinearLayout>
         //文件夹和设置
 

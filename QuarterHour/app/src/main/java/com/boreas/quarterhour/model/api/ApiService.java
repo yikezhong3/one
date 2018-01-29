@@ -6,10 +6,12 @@ import com.boreas.quarterhour.model.LoginSuccesBean;
 import com.boreas.quarterhour.model.RegisterBean;
 import com.boreas.quarterhour.model.RMBean;
 import com.boreas.quarterhour.model.Splash;
+import com.boreas.quarterhour.model.VideoHotBean;
 
 import java.util.Map;
 
 import io.reactivex.Flowable;
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
@@ -32,6 +34,9 @@ public interface ApiService {
     //登录
     @GET("user/login")
     Flowable<LoginSuccesBean> getLoginSuccess(@Query("mobile") String mobile,@Query("password") String password);
+    //热门
+    @GET("quarter/getHotVideos?token=F3768ABA31902C1D56B60F25708B9BCD&source=android&appVersion=101&page=1")
+    Observable<VideoHotBean> getVideoHot();
 
  //注册
     @GET("quarter/register")
@@ -39,4 +44,5 @@ public interface ApiService {
 
     @GET("quarter/getHotVideos")
     Flowable<RMBean> getRMdata(@QueryMap Map<String, String> map);
+
 }

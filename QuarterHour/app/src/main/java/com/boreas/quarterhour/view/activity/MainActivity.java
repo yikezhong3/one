@@ -18,6 +18,7 @@ import com.boreas.quarterhour.R;
 import com.boreas.quarterhour.base.BaseActivity;
 import com.boreas.quarterhour.base.BasePresenter;
 import com.boreas.quarterhour.utils.CornersTransform;
+import com.boreas.quarterhour.utils.DrawableSwitch;
 import com.boreas.quarterhour.utils.MessageEvent;
 import com.boreas.quarterhour.view.fragment.CrossTalkFragment;
 import com.boreas.quarterhour.view.fragment.FunnyPicturesFragment;
@@ -198,17 +199,27 @@ public class MainActivity extends BaseActivity{
         //得到menu的View
         View v = inflater.inflate(R.layout.leftmenu, null);
         ListView listview = (ListView) v.findViewById(R.id.listView1);
+        DrawableSwitch drawSwitch = v.findViewById(R.id.drawableSwitch);
         touxiang = v.findViewById(R.id.slid_touxiang);
         username1 = v.findViewById(R.id.username);
+        //开关的点击事件
+        drawSwitch.setListener(new DrawableSwitch.MySwitchStateChangeListener() {
+            @Override
+            public void mySwitchStateChanged(boolean isSwitchOn) {
+                if (isSwitchOn=true){
+                    Toast.makeText(MainActivity.this,"开启",Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(MainActivity.this,"关闭",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
 
-
-
+        //头像的点击事件
         touxiang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, LoginHomePage.class));
-
             }
         });
         BaseAdapter adapter = new BaseAdapter() {

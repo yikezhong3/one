@@ -1,6 +1,8 @@
 package com.boreas.quarterhour.utils.dagger;
 
 import com.boreas.quarterhour.view.activity.LeadActivity;
+import com.boreas.quarterhour.view.fragment.Video.SPRMFragment;
+import com.boreas.quarterhour.view.fragment.VideoFragment;
 
 import dagger.Component;
 
@@ -10,4 +12,5 @@ import dagger.Component;
 @Component(modules = MyMoudle.class)
 public interface MyComponent {
     public void inject(LeadActivity lead);
+    public void injectsp(SPRMFragment videohotFragment);
 }
