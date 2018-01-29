@@ -1,6 +1,8 @@
 package com.boreas.quarterhour.view.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -101,6 +103,11 @@ public class LoginOriginal extends BaseActivity implements LoginSuccesView {
     public void getData(LoginSuccesBean loginSuccesBean) {
         String code = loginSuccesBean.getCode();
         if (code.equals("0")) {
+            int uid = loginSuccesBean.getData().getUid();
+            String token = loginSuccesBean.getData().getToken();
+            SharedPreferences sp = getSharedPreferences("sp_demo", Context.MODE_PRIVATE);
+            sp.edit().putString("token", token).putInt("uid", uid).commit();
+
             Toast.makeText(LoginOriginal.this, "登录成功", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(LoginOriginal.this, MainActivity.class);
             startActivity(intent);

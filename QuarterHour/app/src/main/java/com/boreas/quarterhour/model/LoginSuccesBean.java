@@ -1,10 +1,12 @@
 package com.boreas.quarterhour.model;
 
+import java.io.Serializable;
+
 /**
  * Created by dream on 2018/1/25.
  */
 
-public class LoginSuccesBean {
+public class LoginSuccesBean implements Serializable{
 
     /**
      * msg : 登录成功
