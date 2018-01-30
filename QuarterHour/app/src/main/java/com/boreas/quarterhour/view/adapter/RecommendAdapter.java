@@ -1,19 +1,14 @@
 package com.boreas.quarterhour.view.adapter;
 
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.app.Activity;
 import android.content.Context;
-import android.os.Environment;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.SeekBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,8 +17,7 @@ import com.boreas.quarterhour.model.CarouselModel;
 import com.boreas.quarterhour.model.RMBean;
 import com.boreas.quarterhour.utils.MyImageLoader;
 import com.boreas.quarterhour.utils.ShowAnimUtil;
-import com.dou361.ijkplayer.widget.PlayStateParams;
-import com.dou361.ijkplayer.widget.PlayerView;
+import com.boreas.quarterhour.view.activity.UserDetailsActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
@@ -33,6 +27,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.jzvd.JZVideoPlayerStandard;
 
 /**
  * Created by 123 on 2018/1/22.
@@ -161,7 +156,7 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
     //private static List<TextView> textViews = new ArrayList<>();
     private List<RMBean.DataBean.UserBean> userBeans = new ArrayList<>();
     private List<RMBean.DataBean.CommentsBean> commentsBeans = new ArrayList<>();
-    private boolean isMenuOpen = false;
+    private String uid = "";
 
     public TJitemAdapter(Context context, List<RMBean.DataBean> rmLists) {
         this.context = context;
@@ -175,7 +170,7 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-
+        uid = rmLists.get(position).getUid()+"";
         userBeans.clear();
         commentsBeans.clear();
         userBeans.add(rmLists.get(position).getUser());
@@ -192,18 +187,26 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
             viewHolder.textViews.add(viewHolder.tvBanned);
             viewHolder.textViews.add(viewHolder.tvWarning);
             viewHolder.textViews.add(viewHolder.tvTimg);
+            String url2 = "http://ic.snssdk.com/neihan/video/playback/?video_id=3037a89e9e3f44338e2c55e0927e43f7&quality=480p&line=0&is_gif=0&device_platform=.mp4";
+            String url = "http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg";
+            viewHolder.videoplayer.setUp(url2
+                    , JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, "哎呦我靠");
+            new MyImageLoader().displayImage(context, url, viewHolder.videoplayer.thumbImageView);
+            viewHolder.videoplayer.thumbImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+
+            viewHolder.incMenu.bringToFront();
 
             viewHolder.imgPublish.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if (!rmLists.get(position).isMenuOpen()) {
                         //showOpenAnim(viewHolder, 140);
-                        new ShowAnimUtil().showOpenAnim(context,viewHolder,viewHolder.imageViews,viewHolder.textViews,viewHolder.imgPublish,140);
+                        new ShowAnimUtil().showOpenAnim(context, viewHolder, viewHolder.imageViews, viewHolder.textViews, viewHolder.imgPublish, 140);
                         viewHolder.imgPublish.setImageResource(R.mipmap.ico_minus);
                         rmLists.get(position).setMenuOpen(true);
                     } else {
                         //showCloseAnim(viewHolder, 140);
-                        new ShowAnimUtil().showCloseAnim(context,viewHolder,viewHolder.imageViews,viewHolder.textViews,viewHolder.imgPublish,140);
+                        new ShowAnimUtil().showCloseAnim(context, viewHolder, viewHolder.imageViews, viewHolder.textViews, viewHolder.imgPublish, 140);
                         viewHolder.imgPublish.setImageResource(R.mipmap.ico_plus);
                         rmLists.get(position).setMenuOpen(false);
                     }
@@ -213,8 +216,10 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
             viewHolder.banned.setOnClickListener(this);
             viewHolder.warning.setOnClickListener(this);
             viewHolder.nickname.setText(userBeans.get(0).getNickname());
-            String url = "http://ic.snssdk.com/neihan/video/playback/?video_id=3037a89e9e3f44338e2c55e0927e43f7&quality=480p&line=0&is_gif=0&device_platform=.mp4";
 
+            viewHolder.userHeadImage.setOnClickListener(this);
+
+            new MyImageLoader().displayImage(context, "http://pic2.cxtuku.com/00/16/04/b163c9e46800.jpg", viewHolder.userHeadImage);
             viewHolder.createTime.setText(arrs[0] + " " + arrs[1]);
             viewHolder.title.setText(rmLists.get(position).getWorkDesc());
             viewHolder.repin1.setText(commentsBeans.get(0).getNickname() + ":" + commentsBeans.get(0).getContent());
@@ -229,15 +234,20 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.timg:
-                Toast.makeText(context,"点击了1",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "点击了1", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.warning:
-                Toast.makeText(context,"点击了2",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "点击了2", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.banned:
-                Toast.makeText(context,"点击了3",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "点击了3", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.userHeadImage:
+                Intent intent = new Intent(context, UserDetailsActivity.class);
+                intent.putExtra("uid", uid);
+                context.startActivity(intent);
                 break;
         }
     }
@@ -372,9 +382,10 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
         TextView repin1;
         @BindView(R.id.repin2)
         TextView repin2;
-        @BindView(R.id.simple_player_volume_controller)
-        SeekBar simplePlayerVolumeController;
-
+        @BindView(R.id.inc_menu)
+        RelativeLayout incMenu;
+        @BindView(R.id.videoplayer)
+        JZVideoPlayerStandard videoplayer;
         public List<ImageView> imageViews;
         public List<TextView> textViews;
 
@@ -384,5 +395,4 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
             ButterKnife.bind(this, itemView);
         }
     }
-
 }
