@@ -7,3 +7,4 @@
 /library/library.iml
 /library/build/
 /app/build.gradle
+*.iml
