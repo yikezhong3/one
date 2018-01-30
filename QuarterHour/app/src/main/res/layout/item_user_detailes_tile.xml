@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/userDetailGround"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@mipmap/ic_launcher"/>
+    <include
+        layout="@layout/item_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/userDetailImage"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@+id/userDetailGround"
+        android:layout_marginTop="-50dp"
+        android:layout_width="100dp"
+        android:background="@mipmap/ic_launcher"
+        android:layout_height="100dp" />
+    <include
+        android:id="@+id/item_fans_ll"
+        layout="@layout/item_fans"
+        android:layout_width="match_parent"
+        android:layout_toRightOf="@+id/userDetailImage"
+        android:layout_toLeftOf="@+id/fabulousNum"
+        android:layout_margin="16dp"
+        android:layout_below="@+id/userDetailGround"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:id="@+id/fabulousNum"
+        android:layout_width="50dp"
+        android:layout_below="@+id/userDetailGround"
+        android:orientation="vertical"
+        android:background="@drawable/bg_bt_registernone"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:layout_marginRight="16dp"
+        android:layout_height="50dp" >
+        <ImageView
+            android:id="@+id/zanImage"
+            android:background="@mipmap/zan"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+        <TextView
+            android:id="@+id/zanNum"
+            android:text="0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/worksNum"
+        android:text="作品(0)"
+        android:textColor="#29B6F6"
+        android:layout_below="@+id/item_fans_ll"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
