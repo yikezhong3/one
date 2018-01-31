@@ -36,14 +36,11 @@
                 android:layout_marginLeft="5dp"
                 android:id="@+id/adapter_dztime"/>
         </LinearLayout>
-       <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:id="@+id/adapter_dzjiadan"
-            android:src="@drawable/jiahao"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"/>
+       <include
+           android:layout_marginTop="10dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           layout="@layout/item_menu"/>
     </RelativeLayout>
     <TextView
         android:layout_width="match_parent"

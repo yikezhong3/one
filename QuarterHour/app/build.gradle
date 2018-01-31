@@ -70,5 +70,5 @@ dependencies {
     //视频播放器
     compile 'fm.jiecao:jiecaovideoplayer:5.5.2'
     compile 'com.dou361.ijkplayer:jjdxm-ijkplayer:1.0.5'
-
+    compile 'cn.jzvd:jiaozivideoplayer:6.2.7'
 }

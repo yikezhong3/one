@@ -120,14 +120,14 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     holderOne.btFollow.setTextColor(Color.WHITE);
                     playNum++;
                     holderOne.btFollow.setTag(2);
-                    notifyDataSetChanged();
+
                 } else {
                     holderOne.btFollow.setBackgroundResource(R.drawable.bg_tv_guanzhu);
                     holderOne.btFollow.setText("+关注");
                     playNum--;
                     holderOne.btFollow.setTextColor(context.getResources().getColor(R.color.textColorUserDatils));
                     holderOne.btFollow.setTag(1);
-                    notifyDataSetChanged();
+
                 }
 
                 break;

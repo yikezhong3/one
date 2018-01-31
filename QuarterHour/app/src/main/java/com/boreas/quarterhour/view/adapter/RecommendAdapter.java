@@ -189,8 +189,7 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
             viewHolder.textViews.add(viewHolder.tvTimg);
             String url2 = "http://ic.snssdk.com/neihan/video/playback/?video_id=3037a89e9e3f44338e2c55e0927e43f7&quality=480p&line=0&is_gif=0&device_platform=.mp4";
             String url = "http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg";
-            viewHolder.videoplayer.setUp(url2
-                    , JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, "哎呦我靠");
+            viewHolder.videoplayer.setUp(url2,JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, "哎呦我靠");
             new MyImageLoader().displayImage(context, url, viewHolder.videoplayer.thumbImageView);
             viewHolder.videoplayer.thumbImageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
@@ -252,108 +251,7 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
         }
     }
 
-/*    //打开
-    private void showOpenAnim(TJitemViewHolder viewHolder, int dp) {
-        viewHolder.timg.setVisibility(View.VISIBLE);
-        viewHolder.banned.setVisibility(View.VISIBLE);
-        viewHolder.warning.setVisibility(View.VISIBLE);
-        viewHolder.tvTimg.setVisibility(View.VISIBLE);
-        viewHolder.tvBanned.setVisibility(View.VISIBLE);
-        viewHolder.tvWarning.setVisibility(View.VISIBLE);
-        //for循环来开始小图标的出现动画
-        for (int i = 0; i < viewHolder.imageViews.size(); i++) {
-            AnimatorSet set = new AnimatorSet();
-            double a = -(25 * Math.PI / 180 * (i + 1));
-            double x = a * dip2px(dp);
-            Log.e("aaaaaaa", a + "");
-            // double y = b * dip2px(dp);
-            //ObjectAnimator.ofFloat(textViews.get(i), "trans lationY", (float) (y * 0.25), (float) y),
-            set.playTogether(
-                    ObjectAnimator.ofFloat(viewHolder.imageViews.get(i), "translationX", (float) (x * 0.25), (float) x),
-                    ObjectAnimator.ofFloat(viewHolder.imageViews.get(i), "rotation", 360, 0).setDuration(1000),
-                    ObjectAnimator.ofFloat(viewHolder.imageViews.get(i), "alpha", 0, 1).setDuration(1000),
-                    ObjectAnimator.ofFloat(viewHolder.textViews.get(i), "translationX", (float) (x * 0.25), (float) x),
-                    ObjectAnimator.ofFloat(viewHolder.textViews.get(i), "alpha", 0, 1).setDuration(1000)
-            );
-            //this is 弹弹弹
-            //set.setInterpolator(new BounceInterpolator());
-            set.setDuration(1000);
-            set.start();
-        }
 
-        //转动加号大图标本身
-        ObjectAnimator rotate = ObjectAnimator.ofFloat(viewHolder.imgPublish, "rotation", 360, 0).setDuration(1000);
-        //this is 弹弹弹
-        //rotate.setInterpolator(new BounceInterpolator());
-        rotate.start();
-
-    }
-
-    //关闭
-    private void showCloseAnim(final TJitemViewHolder viewHolder, int dp) {
-        double a = 0;
-        double x = 0;
-        for (int i = 0; i < viewHolder.imageViews.size(); i++) {
-            AnimatorSet set = new AnimatorSet();
-            a = -(25 * Math.PI / 180 * (i + 1));
-            //double b = -Math.sin(20 * Math.PI / 180 * (i * 2 + 1));
-            x = a * dip2px(dp);
-            //double y = b * dip2px(dp);
-            //ObjectAnimator.ofFloat(textViews.get(i), "translationY", (float) y, (float) (y * 0.25)),
-            set.playTogether(
-                    ObjectAnimator.ofFloat(viewHolder.imageViews.get(i), "translationX", (float) x, (float) (x * 0.25)),
-                    ObjectAnimator.ofFloat(viewHolder.imageViews.get(i), "rotation", 0, 360).setDuration(1000),
-                    ObjectAnimator.ofFloat(viewHolder.imageViews.get(i), "alpha", 1, 0).setDuration(1000),
-                    ObjectAnimator.ofFloat(viewHolder.textViews.get(i), "translationX", (float) x, (float) (x * 0.25)),
-                    ObjectAnimator.ofFloat(viewHolder.textViews.get(i), "alpha", 1, 0).setDuration(1000)
-            );
-            //this is 弹弹弹
-            //set.setInterpolator(new AccelerateInterpolator());
-            set.setDuration(1000);
-            set.start();
-
-            set.addListener(new Animator.AnimatorListener() {
-                @Override
-                public void onAnimationStart(Animator animation) {
-
-                }
-
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    viewHolder.timg.setVisibility(View.GONE);
-                    viewHolder.banned.setVisibility(View.GONE);
-                    viewHolder.warning.setVisibility(View.GONE);
-                    viewHolder.tvTimg.setVisibility(View.GONE);
-                    viewHolder.tvBanned.setVisibility(View.GONE);
-                    viewHolder.tvWarning.setVisibility(View.GONE);
-                    //菜单状态置关闭
-                    isMenuOpen = false;
-                }
-
-                @Override
-                public void onAnimationCancel(Animator animation) {
-
-                }
-
-                @Override
-                public void onAnimationRepeat(Animator animation) {
-
-                }
-            });
-        }
-        //转动加号大图标本身
-        ObjectAnimator rotate = ObjectAnimator.ofFloat(viewHolder.imgPublish, "rotation", 0, 360).setDuration(1000);
-        //this is 弹弹弹
-        //rotate.setInterpolator(new BounceInterpolator());
-        rotate.start();
-    }
-
-    //转换dp参数为px值
-    private int dip2px(int value) {
-        float density = context.getResources()
-                .getDisplayMetrics().density;
-        return (int) (density * value + 0.5f);
-    }*/
 
     class TJitemViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.userHeadImage)

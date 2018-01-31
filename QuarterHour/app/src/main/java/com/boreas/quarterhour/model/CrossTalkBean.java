@@ -65,6 +65,7 @@ public class CrossTalkBean {
         private Object shareNum;
         private int uid;
         private UserBean user;
+        private boolean menuOpen;
 
         public Object getCommentNum() {
             return commentNum;
@@ -136,6 +137,14 @@ public class CrossTalkBean {
 
         public void setUser(UserBean user) {
             this.user = user;
+        }
+
+        public boolean isMenuOpen() {
+            return menuOpen;
+        }
+
+        public void setMenuOpen(boolean menuOpen) {
+            this.menuOpen = menuOpen;
         }
 
         public static class UserBean {
