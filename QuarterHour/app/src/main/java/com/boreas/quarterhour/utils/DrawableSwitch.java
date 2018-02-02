@@ -13,7 +13,7 @@ import android.view.View;
 import com.boreas.quarterhour.R;
 
 /**
- * Created by dream on 2018/1/29.
+ * Created by dream on 2018/1/30.
  */
 
 public class DrawableSwitch extends View
@@ -249,6 +249,9 @@ public class DrawableSwitch extends View
     {
         this.listener = myListener;
     }
+
+
+
 
     /**
      * 定义的一个内部接口，用来监听控件状态更改事件

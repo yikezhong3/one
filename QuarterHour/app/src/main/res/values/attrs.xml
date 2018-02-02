@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <attr name="mainBackground" format="color|reference"></attr>
+
     <declare-styleable name="drawableSwitch">
         <attr name="radius" format="dimension" />
         <attr name="switchOnColor" format="color" />
@@ -7,5 +10,12 @@
         <attr name="circleColor" format="color" />
         <attr name="textColor" format="color" />
         <attr name="isSwitchOn" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="SwitchView">
+        <attr name="hasShadow" format="boolean"/>
+        <attr name="primaryColor" format="color"/>
+        <attr name="primaryColorDark" format="color"/>
+        <attr name="isOpened" format="boolean"/>
     </declare-styleable>
 </resources>

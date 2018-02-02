@@ -1,14 +1,18 @@
 package com.boreas.quarterhour.base;
 
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.boreas.quarterhour.R;
 import com.boreas.quarterhour.utils.SlidingLayout;
+import com.boreas.quarterhour.view.activity.MainActivity;
 import com.jaeger.library.StatusBarUtil;
 
 import butterknife.ButterKnife;
@@ -22,6 +26,7 @@ public abstract class BaseActivity  <V , P extends  BasePresenter> extends AppCo
 
     private  P presenter;
     private Unbinder bind;
+   boolean isSwitchOn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,7 +48,9 @@ public abstract class BaseActivity  <V , P extends  BasePresenter> extends AppCo
             WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
+
         initDagger();
+        initView();
         presenter = getPresenter();
         if(presenter!= null){
             presenter.attachView((V)this);
@@ -52,7 +59,7 @@ public abstract class BaseActivity  <V , P extends  BasePresenter> extends AppCo
             SlidingLayout rootView = new SlidingLayout(this);
             rootView.bindActivity(this);
         }
-        initView();
+
 
     }
 
@@ -78,4 +85,5 @@ public abstract class BaseActivity  <V , P extends  BasePresenter> extends AppCo
         }
         bind.unbind();
     }
+
 }

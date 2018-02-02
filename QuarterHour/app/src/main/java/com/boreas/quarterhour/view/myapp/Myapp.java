@@ -1,6 +1,7 @@
 package com.boreas.quarterhour.view.myapp;
 
 import android.app.Application;
+import android.support.v7.app.AppCompatDelegate;
 
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
@@ -12,6 +13,9 @@ import com.umeng.socialize.UMShareAPI;
 public class Myapp extends Application {
 
     public static Myapp mInstance;
+    static {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+    }
     @Override
     public void onCreate() {
         super.onCreate();

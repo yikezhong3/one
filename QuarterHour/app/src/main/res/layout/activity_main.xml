@@ -12,7 +12,6 @@
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="bottom"
         app:tab_selected_color="@color/colorBlue"
         app:tab_unselected_color="@color/colorGray"
         android:layout_weight="1">

@@ -3,10 +3,20 @@
     <color name="colorPrimary">#03A9F4</color>
     <color name="colorPrimaryDark">#318db7</color>
     <color name="colorAccent">#047294</color>
+    <color name="textColor">#FF000000</color>
+    <color name="backgroundColor">#FFFFFF</color>
+
+
 
     <color name="colorGray"> #BCBCBC</color>
     <color name="colorBlue"> #03A9F4</color>
     <color name="colorWhite"> #FFFFFF</color>
     <color name="black">#000000</color>
     <color name="buttonbackground">#e3ff02</color>
+
+    <color name="nightColorPrimary">#3b3b3b</color>
+    <color name="nightColorPrimaryDark">#383838</color>
+    <color name="nightColorAccent">#a72b55</color>
+
+
 </resources>

@@ -57,7 +57,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="70dp">
        <ImageView
            android:layout_weight="1"
            android:src="@mipmap/slid_might_model"
@@ -68,11 +68,11 @@
                 android:text="夜间模式"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <com.boreas.quarterhour.utils.DrawableSwitch
-                android:layout_weight="1"
+            <com.boreas.quarterhour.utils.SwitchView
                 android:id="@+id/drawableSwitch"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 lh2:circleColor="#F9F9F9"
@@ -80,7 +80,7 @@
                 lh2:radius="20dp"
                 lh2:switchOffColor="#D8D8D8"
                 lh2:switchOnColor="#6AB344"
-                lh2:textColor="#1C1C0F" />   />
+                lh2:textColor="#1C1C0F" />
         </LinearLayout>
         //文件夹和设置
 
@@ -97,6 +97,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
+                    android:id="@+id/wenjianjia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/slid_wenjianjia" />
@@ -114,6 +115,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
+                    android:id="@+id/shezhi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/slid_shezhi" />

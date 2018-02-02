@@ -1,7 +1,14 @@
 package com.boreas.quarterhour.view.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.support.annotation.ColorInt;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +27,7 @@ import com.boreas.quarterhour.base.BasePresenter;
 import com.boreas.quarterhour.utils.CornersTransform;
 import com.boreas.quarterhour.utils.DrawableSwitch;
 import com.boreas.quarterhour.utils.MessageEvent;
+import com.boreas.quarterhour.utils.SwitchView;
 import com.boreas.quarterhour.view.fragment.CrossTalkFragment;
 import com.boreas.quarterhour.view.fragment.FunnyPicturesFragment;
 import com.boreas.quarterhour.view.fragment.RecommendFragment;
@@ -38,7 +46,6 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity{
 
-
     @BindView(R.id.bottomBar)
     BottomTabBar bottomBar;
     @BindView(R.id.icon)
@@ -55,6 +62,10 @@ public class MainActivity extends BaseActivity{
     private String username;
     private TextView username1;
     private ImageView touxiang;
+    private DrawableSwitch drawableSwitch;
+    private SwitchView switchView;
+    private ImageView wenjianjia;
+    private ImageView shezhi;
 
 
     @Subscribe(threadMode = ThreadMode.POSTING,sticky = true)
@@ -66,9 +77,15 @@ public class MainActivity extends BaseActivity{
         Glide.with(MainActivity.this).load(iconurl).error(R.mipmap.slid_touxiang).transform(new CornersTransform(MainActivity.this,30)).into(touxiang);
         username1.setText(""+ username);
     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+
+    }
+
     @Override
     protected void initDagger() {
-
     }
 
     @Override
@@ -82,12 +99,6 @@ public class MainActivity extends BaseActivity{
     }
     @Override
     protected void initView() {
-        is.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this,"推荐",Toast.LENGTH_SHORT).show();
-            }
-        });
         bottomBar.init(getSupportFragmentManager())
                 .setImgSize(50, 50)
                 .setFontSize(15)
@@ -135,29 +146,10 @@ public class MainActivity extends BaseActivity{
                     }
                 });
 
-
+            Sliding();
     }
 
-
-
-    @Override
-    public BasePresenter getPresenter() {
-        return null;
-    }
-
-    /**
-     * 点击事件
-     *
-     * @param view
-     */
-    public void toggleMenu(View view) {
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
-
+    private void Sliding() {
         // configure the SlidingMenu
         EventBus.getDefault().register(MainActivity.this);
         menu = new SlidingMenu(this);
@@ -186,9 +178,60 @@ public class MainActivity extends BaseActivity{
             @Override
             public void onClick(View v) {
                 menu.toggle();
+
             }
         });
+        //开关的点击事件
+        int mode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        switchView.setOnStateChangedListener(new SwitchView.OnStateChangedListener() {
+            @Override
+            public void toggleToOn(SwitchView view) {
+                switchView.setOpened(true);
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                recreate();
+            }
+
+            @Override
+            public void toggleToOff(SwitchView view) {
+                switchView.setOpened(false);
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                recreate();
+            }
+        });
+
+        //文件夹点击事件
+        wenjianjia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+             Toast.makeText(MainActivity.this,"文件夹",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //设置的点击事件
+        shezhi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this,"设置",Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
+
+
+    @Override
+    public BasePresenter getPresenter() {
+        return null;
+    }
+
+    /**
+     * 点击事件
+     *
+     * @param view
+     */
+    public void toggleMenu(View view) {
+    }
+
+
 
     public View getLeftMenu() {
          final int[] imagesId={R.mipmap.slid_aixin,R.mipmap.slid_wujaioxiang,R.mipmap.slid_select,R.mipmap.slid_lingdang};
@@ -199,20 +242,12 @@ public class MainActivity extends BaseActivity{
         //得到menu的View
         View v = inflater.inflate(R.layout.leftmenu, null);
         ListView listview = (ListView) v.findViewById(R.id.listView1);
-        DrawableSwitch drawSwitch = v.findViewById(R.id.drawableSwitch);
+
+        switchView = v.findViewById(R.id.drawableSwitch);
         touxiang = v.findViewById(R.id.slid_touxiang);
         username1 = v.findViewById(R.id.username);
-        //开关的点击事件
-        drawSwitch.setListener(new DrawableSwitch.MySwitchStateChangeListener() {
-            @Override
-            public void mySwitchStateChanged(boolean isSwitchOn) {
-                if (isSwitchOn=true){
-                    Toast.makeText(MainActivity.this,"开启",Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(MainActivity.this,"关闭",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        wenjianjia = v.findViewById(R.id.wenjianjia);
+        shezhi = v.findViewById(R.id.shezhi);
 
 
         //头像的点击事件
@@ -227,7 +262,7 @@ public class MainActivity extends BaseActivity{
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 // TODO 自动生成的方法存根
-                View layout=View.inflate(MainActivity.this, R.layout.slid_custom_list, null);
+                @SuppressLint("ViewHolder") View layout=View.inflate(MainActivity.this, R.layout.slid_custom_list, null);
                 ImageView face = (ImageView)layout.findViewById(R.id.face);
                 TextView name =(TextView)layout.findViewById(R.id.name);
                 ImageView mark = (ImageView)layout.findViewById(R.id.mark);
@@ -292,6 +327,4 @@ public class MainActivity extends BaseActivity{
         super.onDestroy();
         EventBus.getDefault().unregister(MainActivity.this);
     }
-
-
 }
