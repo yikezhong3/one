@@ -12,7 +12,12 @@
     <color name="colorBlue"> #03A9F4</color>
     <color name="colorWhite"> #FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="textColorUserDatils">#29B6F6</color>
     <color name="buttonbackground">#e3ff02</color>
+    <color name="fabulousOne">#9CCC65</color>
+    <color name="fabulousTwo">#26C6DA</color>
+    <color name="fabulousThree">#FFA726</color>
+
 
     <color name="nightColorPrimary">#3b3b3b</color>
     <color name="nightColorPrimaryDark">#383838</color>

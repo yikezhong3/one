@@ -69,7 +69,7 @@
         <activity
             android:name=".view.activity.PropertyActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
-        <activity android:name=".view.activity.PersonaldetailsActivity"></activity>
+        <activity android:name=".view.activity.UserDetailsActivity"></activity>
         <activity android:name=".view.activity.VideoHotDetailsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"></activity>

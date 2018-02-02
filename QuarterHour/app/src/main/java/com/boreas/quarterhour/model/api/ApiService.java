@@ -6,6 +6,7 @@ import com.boreas.quarterhour.model.LoginSuccesBean;
 import com.boreas.quarterhour.model.RegisterBean;
 import com.boreas.quarterhour.model.RMBean;
 import com.boreas.quarterhour.model.Splash;
+import com.boreas.quarterhour.model.UserDetailBean;
 import com.boreas.quarterhour.model.VideoHotBean;
 
 import java.util.Map;
@@ -44,5 +45,8 @@ public interface ApiService {
 
     @GET("quarter/getHotVideos")
     Flowable<RMBean> getRMdata(@QueryMap Map<String, String> map);
+
+    @GET("quarter/getUserVideos")
+    Flowable<UserDetailBean> getUserDetailsData(@QueryMap Map<String, String> map);
 
 }

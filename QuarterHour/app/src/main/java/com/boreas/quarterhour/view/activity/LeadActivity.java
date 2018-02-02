@@ -75,4 +75,14 @@ public class LeadActivity extends BaseActivity<SplashView, SplashPresenter> impl
 
 
     }
-}
+            }
+/*怎样稳定团队？
+* 解决问题完成工作
+* 团队分析
+* 团队成长
+* 沟通威信树立威信
+*
+* 技术的框架
+* 技术的潜在性
+*
+* */

@@ -24,6 +24,8 @@ public class ShowAnimUtil {
         for (int i = 0; i < list1.size(); i++) {
             list1.get(i).setVisibility(View.VISIBLE);
             list2.get(i).setVisibility(View.VISIBLE);
+            list1.get(i).bringToFront();
+            list2.get(i).bringToFront();
             AnimatorSet set = new AnimatorSet();
             double a = -(25 * Math.PI / 180 * (i + 1));
             double x = a * dip2px(dp,context);
