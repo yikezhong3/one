@@ -4,7 +4,8 @@
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+       >
         <ImageView
             android:id="@+id/adapter_dzicon"
             android:layout_width="@dimen/icon_width"
@@ -23,7 +24,8 @@
             android:orientation="vertical"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp">
+            android:layout_marginLeft="5dp"
+            >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

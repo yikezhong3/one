@@ -1,6 +1,7 @@
 package com.boreas.quarterhour.view.fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
@@ -24,7 +25,7 @@ public class CrossTalkFragment extends BaseFragment implements CrossTalkView {
     private CarousePresenter presenter;
 
     private List<CrossTalkBean.DataBean> list = new ArrayList<>();;
-    private XRecyclerView dz_xrecycler;
+    private RecyclerView dz_xrecycler;
     private CrossTalkAdapterr crossTalkAdapter;
 
     @Override
