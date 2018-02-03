@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.boreas.quarterhour.R;
 import com.boreas.quarterhour.view.fragment.Tab1Fragment;
@@ -27,7 +29,16 @@ public class MineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mine);
         //实例化
-
+        TextView textView = (TextView) findViewById(R.id.title).findViewById(R.id.callback);
+        TextView title = (TextView) findViewById(R.id.title).findViewById(R.id.title1);
+        textView.setText("<返回");
+        title.setText("我的作品");
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
 //页面，数据源
