@@ -79,6 +79,8 @@
         <activity android:name=".view.SelectActivity" />
         <activity android:name=".view.activity.MineActivity" />
         <activity android:name=".view.activity.SettingActivity"></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".view.activity.PhotoBrowseActivity"></activity>
     </application>
 
 </manifest>
