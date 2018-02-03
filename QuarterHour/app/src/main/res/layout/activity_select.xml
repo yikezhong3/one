@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/bg_dialog_left_white"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="com.boreas.quarterhour.view.SelectActivity">
+     <scut.carson_ho.searchview.SearchView
+         android:id="@+id/search_view"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         app:textSizeSearch="5dp"
+         app:textColorSearch="#3F51B5"
+         app:textHintSearch="输入查询关键字"
+         app:searchBlockHeight="150"
+         app:searchBlockColor="#ffffff"
+         />
+     <TextView
+         android:text="您可能感兴趣的用户"
+         android:textColor="@android:color/holo_red_dark"
+         android:layout_width="match_parent"
+         android:gravity="center"
+         android:layout_height="wrap_content" />
+     <android.support.v7.widget.RecyclerView
+         android:id="@+id/recyclerView"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+</LinearLayout>

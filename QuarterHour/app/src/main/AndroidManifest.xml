@@ -68,11 +68,17 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".view.activity.PropertyActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
-        <activity android:name=".view.activity.UserDetailsActivity"></activity>
-        <activity android:name=".view.activity.VideoHotDetailsActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity android:name=".view.activity.UserDetailsActivity" />
+        <activity
+            android:name=".view.activity.VideoHotDetailsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".view.activity.AttentionActivity" />
+        <activity android:name=".view.activity.CollectActivity" />
+        <activity android:name=".view.SelectActivity" />
+        <activity android:name=".view.activity.MineActivity" />
+        <activity android:name=".view.activity.SettingActivity"></activity>
     </application>
 
 </manifest>

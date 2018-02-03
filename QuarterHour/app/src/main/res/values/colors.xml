@@ -17,11 +17,17 @@
     <color name="fabulousOne">#9CCC65</color>
     <color name="fabulousTwo">#26C6DA</color>
     <color name="fabulousThree">#FFA726</color>
-
+    <color name="colorDefault">#ffffff</color>
+    <color name="colorBackground">#f1f0f6</color>
+    <color name="colorText">#9b9b9b</color>
 
     <color name="nightColorPrimary">#3b3b3b</color>
     <color name="nightColorPrimaryDark">#383838</color>
     <color name="nightColorAccent">#a72b55</color>
+
+    <color name="tuichu_benjing">#eaeaea</color>
+    <color name="tuichu_button">#fa7265</color>
+    <color name="tuichu_bbbb">#fdfdfe</color>
 
 
 </resources>

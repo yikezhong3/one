@@ -1,7 +1,9 @@
 package com.boreas.quarterhour.view.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -24,24 +26,38 @@ import android.widget.Toast;
 import com.boreas.quarterhour.R;
 import com.boreas.quarterhour.base.BaseActivity;
 import com.boreas.quarterhour.base.BasePresenter;
+import com.boreas.quarterhour.model.AttentionBean;
+import com.boreas.quarterhour.model.LoginSuccesBean;
+import com.boreas.quarterhour.model.api.Api;
+import com.boreas.quarterhour.model.api.ApiService;
 import com.boreas.quarterhour.utils.CornersTransform;
 import com.boreas.quarterhour.utils.DrawableSwitch;
 import com.boreas.quarterhour.utils.MessageEvent;
 import com.boreas.quarterhour.utils.SwitchView;
+import com.boreas.quarterhour.view.SelectActivity;
 import com.boreas.quarterhour.view.fragment.CrossTalkFragment;
 import com.boreas.quarterhour.view.fragment.FunnyPicturesFragment;
 import com.boreas.quarterhour.view.fragment.RecommendFragment;
 import com.boreas.quarterhour.view.fragment.VideoFragment;
 import com.bumptech.glide.Glide;
 import com.hjm.bottomtabbar.BottomTabBar;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Flowable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subscribers.DisposableSubscriber;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class MainActivity extends BaseActivity{
@@ -66,6 +82,7 @@ public class MainActivity extends BaseActivity{
     private SwitchView switchView;
     private ImageView wenjianjia;
     private ImageView shezhi;
+
 
 
     @Subscribe(threadMode = ThreadMode.POSTING,sticky = true)
@@ -99,6 +116,8 @@ public class MainActivity extends BaseActivity{
     }
     @Override
     protected void initView() {
+
+
         bottomBar.init(getSupportFragmentManager())
                 .setImgSize(50, 50)
                 .setFontSize(15)
@@ -203,7 +222,7 @@ public class MainActivity extends BaseActivity{
         wenjianjia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             Toast.makeText(MainActivity.this,"文件夹",Toast.LENGTH_SHORT).show();
+             startActivity(new Intent(MainActivity.this,MineActivity.class));
             }
         });
 
@@ -211,7 +230,7 @@ public class MainActivity extends BaseActivity{
         shezhi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"设置",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this,SettingActivity.class));
             }
         });
 
@@ -296,7 +315,15 @@ public class MainActivity extends BaseActivity{
       listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
           @Override
           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-              Toast.makeText(MainActivity.this,"点击了"+position,Toast.LENGTH_SHORT).show();
+              if (position==0){
+                  startActivity(new Intent(MainActivity.this,AttentionActivity.class));
+              }else if (position==1){
+                  startActivity(new Intent(MainActivity.this,CollectActivity.class));
+              }else if (position==2){
+                  startActivity(new Intent(MainActivity.this,SelectActivity.class));
+              }else{
+                  Toast.makeText(MainActivity.this,"敬请期待",Toast.LENGTH_SHORT).show();
+              }
           }
       });
         return v;
@@ -322,9 +349,12 @@ public class MainActivity extends BaseActivity{
         }
     }
 
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(MainActivity.this);
     }
+
 }
