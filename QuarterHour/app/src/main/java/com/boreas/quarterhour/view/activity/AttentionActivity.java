@@ -8,6 +8,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
 import com.boreas.quarterhour.R;
 import com.boreas.quarterhour.model.AttentionBean;
@@ -33,6 +35,16 @@ public class AttentionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attention);
+        TextView textView = (TextView) findViewById(R.id.title).findViewById(R.id.callback);
+        TextView title = (TextView) findViewById(R.id.title).findViewById(R.id.title1);
+        textView.setText("<返回");
+        title.setText("我的关注");
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         sp = getSharedPreferences("sp_demo", Context.MODE_PRIVATE);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
