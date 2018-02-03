@@ -52,6 +52,7 @@ dependencies {
     compile 'com.google.dagger:dagger:2.4'
     compile 'org.glassfish:javax.annotation:10.0-b28'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.4'
+    compile 'com.jude:easyrecyclerview:4.4.0'
     compile 'com.android.support:recyclerview-v7:26.+'
     //eventbus
     compile 'org.greenrobot:eventbus:3.1.1'
@@ -71,10 +72,8 @@ dependencies {
     compile 'fm.jiecao:jiecaovideoplayer:5.5.2'
     compile 'com.dou361.ijkplayer:jjdxm-ijkplayer:1.0.5'
     compile 'cn.jzvd:jiaozivideoplayer:6.2.7'
-    compile 'com.android.support:recyclerview-v7:21.0.+'
+    compile 'com.android.support:recyclerview-v7:26+'
     compile 'com.carson_ho:SearchLayout:1.0.1'
-
-    compile'com.android.support:appcompat-v7:23.4.0'
-
-    compile'com.android.support:design:24.2.0'
+    compile'com.android.support:design:26+'
+    compile 'com.nineoldandroids:library:2.4.0'
 }
