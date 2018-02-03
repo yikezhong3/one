@@ -4,8 +4,8 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
    >
-<com.jcodecraeer.xrecyclerview.XRecyclerView
+<android.support.v7.widget.RecyclerView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/dz_xrecycler"></com.jcodecraeer.xrecyclerview.XRecyclerView>
+    android:id="@+id/dz_xrecycler"></android.support.v7.widget.RecyclerView>
 </LinearLayout>

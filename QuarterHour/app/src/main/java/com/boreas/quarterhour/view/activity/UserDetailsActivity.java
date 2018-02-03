@@ -56,6 +56,9 @@ public class UserDetailsActivity extends BaseActivity implements UserDatilsView 
         }
     }
 
+
+
+
     @Override
     public int getLayout() {
         return R.layout.activity_user_details;
