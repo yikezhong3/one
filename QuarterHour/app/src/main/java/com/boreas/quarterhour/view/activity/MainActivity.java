@@ -180,7 +180,7 @@ public class MainActivity extends BaseActivity{
          * SlidingMenu.TOUCHMODE_NONE 不响应触摸事件
          */
         menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
-        menu.setShadowWidthRes(R.dimen.shadow_width);
+//        menu.setShadowWidthRes(R.dimen.shadow_width);
         menu.setShadowDrawable(R.color.colorAccent);
         menu.attachToActivity(this,SlidingMenu.SLIDING_CONTENT,true);
         // 设置滑动菜单视图的宽度

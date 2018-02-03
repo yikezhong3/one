@@ -44,7 +44,7 @@ public class SettingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 sp.edit().clear().commit();
                 Toast.makeText(SettingActivity.this, "退出登录", Toast.LENGTH_SHORT).show();
-                finish();
+                System.exit(0);
             }
         });
     }
