@@ -31,7 +31,11 @@
         android:theme="@style/AppTheme.Slide">
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="5a6880f9a40fa34ecf000105" />
+            android:value="5a597454f43e486b3700010b" />
+        <!-- 多渠道打包 -->
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}" />
 
         <activity
             android:name=".view.activity.MainActivity"
@@ -49,6 +53,7 @@
         <activity android:name=".view.activity.ForgetActivity" />
         <activity android:name=".view.activity.LoginOriginal" />
         <activity android:name=".view.activity.RegisterActivity" />
+        <!-- QQ精简版 -->
         <activity
             android:name="com.umeng.qq.tencent.AuthActivity"
             android:launchMode="singleTask"
@@ -65,26 +70,46 @@
         <activity
             android:name="com.umeng.qq.tencent.AssistActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- 微信 -->
         <activity
             android:name=".view.activity.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".view.activity.PropertyActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
-        <activity android:name=".view.activity.UserDetailsActivity" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
+        <activity android:name=".view.activity.UserDetailsActivity"/>
         <activity
             android:name=".view.activity.VideoHotDetailsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
+        <!-- 新浪 -->
+        <activity
+            android:name="com.umeng.socialize.media.WBShareCallBackActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+        <activity
+            android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".view.activity.VideoHotTouxiangActivity"></activity>
         <activity android:name=".view.activity.AttentionActivity" />
         <activity android:name=".view.activity.CollectActivity" />
         <activity android:name=".view.SelectActivity" />
         <activity android:name=".view.activity.MineActivity" />
         <activity android:name=".view.activity.SettingActivity" />
-        android:screenOrientation="portrait" />
         <activity android:name=".view.activity.PhotoBrowseActivity" />
         <activity android:name=".view.activity.CreateActivity" />
         <activity android:name=".view.activity.FilmActivity"

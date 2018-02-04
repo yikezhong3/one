@@ -3,6 +3,7 @@ package com.boreas.quarterhour.view.activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.ViewGroup;
 
 import com.boreas.quarterhour.R;
@@ -37,6 +38,7 @@ public class UserDetailsActivity extends BaseActivity implements UserDatilsView 
     protected void initView() {
         map = new HashMap<>();
         String uid = getIntent().getStringExtra("uid");
+        Log.d("UserDetailsActi--uid ==",uid);
         map.put("uid", uid);
         map.put("page", page + "");
         map.put("source", "android");
@@ -55,9 +57,6 @@ public class UserDetailsActivity extends BaseActivity implements UserDatilsView 
             userDetailRecycle.setAdapter(adapter);
         }
     }
-
-
-
 
     @Override
     public int getLayout() {

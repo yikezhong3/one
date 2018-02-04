@@ -11,6 +11,7 @@ import android.view.View;
 import com.boreas.quarterhour.R;
 import com.boreas.quarterhour.base.BaseFragment;
 import com.boreas.quarterhour.model.VideoHotBean;
+import com.boreas.quarterhour.model.VideoHotLike;
 import com.boreas.quarterhour.presneter.VideoHotPresenter;
 import com.boreas.quarterhour.utils.dagger.DaggerMyComponent;
 import com.boreas.quarterhour.view.adapter.VideoHotAdapter;

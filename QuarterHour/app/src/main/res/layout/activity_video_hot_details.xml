@@ -69,7 +69,9 @@
     <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
         android:id="@+id/video_hot_details_videoplayer"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
     </fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard>
 

@@ -18,6 +18,7 @@ import com.boreas.quarterhour.model.LoginSuccesBean;
 import com.boreas.quarterhour.model.api.Api;
 import com.boreas.quarterhour.presneter.LoginSuccessPresenter;
 import com.boreas.quarterhour.view.LoginSuccesView;
+import com.umeng.socialize.utils.Log;
 
 import java.lang.reflect.Proxy;
 import java.util.Date;
@@ -109,6 +110,9 @@ public class LoginOriginal extends BaseActivity implements LoginSuccesView {
             sp.edit().putString("token", token).putInt("uid", uid).commit();
 
             Toast.makeText(LoginOriginal.this, "登录成功", Toast.LENGTH_SHORT).show();
+            int i = sp.getInt("uid", 0);
+            Log.i("uid=======",i+"-----------------");
+            System.out.println("i = " + i);
             Intent intent = new Intent(LoginOriginal.this, MainActivity.class);
             startActivity(intent);
         } else {

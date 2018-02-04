@@ -12,6 +12,8 @@ import com.boreas.quarterhour.model.SelectBean;
 import com.boreas.quarterhour.model.Splash;
 import com.boreas.quarterhour.model.UserDetailBean;
 import com.boreas.quarterhour.model.VideoHotBean;
+import com.boreas.quarterhour.model.VideoHotLike;
+import com.boreas.quarterhour.view.fragment.Video.view.VideoHotCollect;
 
 import java.util.Map;
 
@@ -43,32 +45,39 @@ public interface ApiService {
     @GET("quarter/getHotVideos?token=F3768ABA31902C1D56B60F25708B9BCD&source=android&appVersion=101&page=1")
     Observable<VideoHotBean> getVideoHot();
 
-  //搜索好友
+    //搜索好友
     @GET("quarter/randomFriends?source=android&appVersion=1")
     Flowable<SelectBean> getSelect();
 
-//bendi
+    //bendi
     @GET("travel/?key=ac87b4a4e634eb4a4e96fd371490a667&num=21")
     Flowable<BendiBean> getBendi();
 
-//bendi
+    //bendi
     @GET("/meinv/?key=ac87b4a4e634eb4a4e96fd371490a667&num=9")
     Flowable<BendiBean> getYi();
 
- //注册
+    //注册
     @GET("quarter/register")
     Flowable<RegisterBean> getRegisterSuccess(@Query("regType") int regType, @Query("mobile") String mobile, @Query("password") String password);
 
- //关注
+    //关注
     @GET("quarter/getFollowUsers")
     Flowable<AttentionBean> getAttention(@Query("uid") int uid, @Query("token") String token, @Query("source") String source, @Query("appVersion") String appVersion);
 
-   //收藏
+    //收藏
     @GET("quarter/getFavorites")
     Flowable<CollectBean> getCollect(@Query("uid") int uid, @Query("token") String token, @Query("source") String source, @Query("appVersion") String appVersion);
 
     @GET("quarter/getHotVideos")
     Flowable<RMBean> getRMdata(@QueryMap Map<String, String> map);
+
+    //视频热门点赞
+    @GET("quarter/praise?source=android&appVersion=101")
+    Flowable<VideoHotLike> getVideoHotLike(@Query("token") String token, @Query("uid") String uid, @Query("wid") String wid);
+    //视频热门点赞
+    @GET("quarter/addFavorite?source=android&appVersion=101")
+    Flowable<VideoHotCollect> getVideoHotCollect(@Query("token") String token, @Query("uid") String uid, @Query("wid") String wid);
 
     @GET("quarter/getUserVideos")
     Flowable<UserDetailBean> getUserDetailsData(@QueryMap Map<String, String> map);

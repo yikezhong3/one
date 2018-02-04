@@ -251,8 +251,6 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
         }
     }
 
-
-
     class TJitemViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.userHeadImage)
         ImageView userHeadImage;
@@ -286,7 +284,6 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
         JZVideoPlayerStandard videoplayer;
         public List<ImageView> imageViews;
         public List<TextView> textViews;
-
 
         public TJitemViewHolder(View itemView) {
             super(itemView);

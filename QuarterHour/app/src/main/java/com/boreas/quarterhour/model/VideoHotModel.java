@@ -16,10 +16,12 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class VideoHotModel {
+
     @Inject
     public VideoHotModel() {
 
     }
+
     public void getData(final VideoHotModelCallBack callBack){
 
        /* Map<String,String> map = new HashMap<>();
@@ -51,8 +53,7 @@ public class VideoHotModel {
 
                     }
                 });
-
-
-
     }
+
+
 }

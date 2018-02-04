@@ -2,6 +2,8 @@ package com.boreas.quarterhour.presneter;
 
 import com.boreas.quarterhour.base.BasePresenter;
 import com.boreas.quarterhour.model.VideoHotBean;
+import com.boreas.quarterhour.model.VideoHotLike;
+import com.boreas.quarterhour.model.VideoHotLikeCallBack;
 import com.boreas.quarterhour.model.VideoHotModel;
 import com.boreas.quarterhour.model.VideoHotModelCallBack;
 import com.boreas.quarterhour.view.fragment.Video.view.VideoHotView;
@@ -31,4 +33,5 @@ public class VideoHotPresenter extends BasePresenter<VideoHotView> {
             }
         });
     }
+
 }

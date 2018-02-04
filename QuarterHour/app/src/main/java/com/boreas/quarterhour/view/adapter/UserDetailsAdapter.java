@@ -4,12 +4,14 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.boreas.quarterhour.R;
 import com.boreas.quarterhour.model.UserDetailBean;
@@ -68,7 +70,9 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         if (list != null) {
             if (holder instanceof ViewHolderOne) {
                 holderOne = (ViewHolderOne) holder;
+
                 playNum = list.get(position).getPlayNum();
+                Log.d("wid----",playNum+"---"+list.size()+"--wid--"+list.toString());
                 new MyImageLoader().displayImage(context, userDetailGroundUrl, holderOne.userDetailGround);
                 holderOne.userDetailGround.setScaleType(ImageView.ScaleType.FIT_XY);
                 Glide.with(context).load(userDetailImageUsl).error(R.mipmap.slid_touxiang).transform(new CornersTransform(context, 10)).into(holderOne.userDetailImage);

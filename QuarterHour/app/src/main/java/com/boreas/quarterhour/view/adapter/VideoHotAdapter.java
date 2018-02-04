@@ -18,6 +18,7 @@ import com.boreas.quarterhour.view.activity.VideoHotDetailsActivity;
 import com.bumptech.glide.Glide;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.Inflater;
 
@@ -49,9 +50,26 @@ public class VideoHotAdapter extends XRecyclerView.Adapter<VideoHotAdapter.ViewH
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                VideoHotBean.DataBean dataBean = list.get(position);
+                ArrayList<String> arrayList = new ArrayList<String>();
+                //图片
+                arrayList.add(list.get(position).getCover());
+                //视频
+                arrayList.add(list.get(position).getVideoUrl());
+                //作者
+                arrayList.add(list.get(position).getUser().getNickname());
+                //作者头像
+                arrayList.add(list.get(position).getUser().getIcon());
+                //时间
+                arrayList.add(list.get(position).getCreateTime());
+                //Wid
+                arrayList.add(list.get(position).getWid()+"");
+
                 Intent intent = new Intent(context, VideoHotDetailsActivity.class);
-//                intent.putStringArrayListExtra("",dataBean);
+                intent.putStringArrayListExtra("trings", arrayList);
+
+//                Toast.makeText(context,arrayList.toString(),Toast.LENGTH_LONG).show();
+                System.out.println("strings = " + arrayList.toString());
+
                 context.startActivity(intent);
             }
         });

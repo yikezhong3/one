@@ -16,6 +16,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "color"
     splits {
         abi {
             enable true
@@ -23,6 +24,16 @@ android {
             include 'x86', 'armeabi-v7a'
             universalApk true
         }
+    }
+    productFlavors {
+        kuan {}
+        xiaomi {}
+        qh360 {}
+        baidu {}
+        wandoujia {}
+    }
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
     }
 }
 
@@ -76,4 +87,7 @@ dependencies {
     compile 'com.carson_ho:SearchLayout:1.0.1'
     compile 'com.android.support:design:26+'
     compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.carson_ho:SearchLayout:1.0.1'
+
+    implementation files('libs/SocialSDK_Sina_Simplify.jar')
 }
