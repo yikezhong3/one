@@ -44,7 +44,7 @@ public class ImageAdapter extends RecyclerArrayAdapter<String> {
             int width = dm.widthPixels / 2;//宽度为屏幕宽度一半
 //            int height = data.getHeight() * width / data.getWidth();//计算View的高度
 
-            params.height = (int) (width / 1);
+            params.height = (int) (width / 0.8);
             imgPicture.setLayoutParams(params);
             imgPicture.setImageResource(R.mipmap.ic_launcher);
             Glide.with(getContext())
