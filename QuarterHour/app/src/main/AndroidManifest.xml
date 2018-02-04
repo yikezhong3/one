@@ -74,6 +74,7 @@
             android:name=".view.activity.VideoHotDetailsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
+        <activity android:name=".view.activity.VideoHotTouxiangActivity"/>
         <activity android:name=".view.activity.AttentionActivity" />
         <activity android:name=".view.activity.CollectActivity" />
         <activity android:name=".view.SelectActivity" />
