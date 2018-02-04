@@ -130,6 +130,7 @@ public class LoginHomePage extends BaseActivity {
             String icon = data.get("iconurl");
             String name = data.get("screen_name").toString();
             EventBus.getDefault().postSticky(new MessageEvent(icon, name));
+            finish();
         }
 
         @Override
