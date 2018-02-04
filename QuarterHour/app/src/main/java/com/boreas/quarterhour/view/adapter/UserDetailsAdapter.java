@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.boreas.quarterhour.R;
 import com.boreas.quarterhour.model.UserDetailBean;
@@ -21,9 +21,11 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.jzvd.JZVideoPlayerStandard;
 
 /**
  * Created by 123 on 2018/1/30.
@@ -214,15 +216,47 @@ class UserDatilsTwoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_tj,null,false));
+        return new TJitemViewHolder(LayoutInflater.from(context).inflate(R.layout.item_tj,null,false));
     }
-
+    String[] Uri= {
+            "http://p5.so.qhimgs1.com/bdr/200_200_/t014176f7a05b8f479b.jpg",
+            "http://p0.so.qhimgs1.com/bdr/200_200_/t01af74f62990cb9c40.jpg",
+            "http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1308/25/c1/24851176_1377368343784_mthumb.jpg",
+            "http://img.7139.com/file/201206/10/be31dbcba825d7d157919a96027d9d60.jpg",
+            "http://www.nanrenwo.net/uploads/tagimg/3/141440266112318.jpg",
+            "http://p5.so.qhimgs1.com/bdr/200_200_/t017f6f30f1a76d312b.jpg",
+            "http://p2.so.qhimgs1.com/bdr/200_200_/t0185334976ac01c742.jpg",
+            "http://i2.hexunimg.cn/2011-11-30/135834127.jpg",
+            "http://photo.l99.com/bigger/31/1427449833570_9vpbg2.jpg"};
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof ViewHolder){
-            ViewHolder viewHolder = (ViewHolder) holder;
 
-        }
+            if (holder instanceof TJitemViewHolder) {
+                final TJitemViewHolder viewHolder = (TJitemViewHolder) holder;
+
+                viewHolder.imageViews = new ArrayList<>();
+                viewHolder.textViews = new ArrayList<>();
+                viewHolder.imageViews.add(viewHolder.warning);
+                viewHolder.imageViews.add(viewHolder.timg);
+                viewHolder.imageViews.add(viewHolder.banned);
+                viewHolder.textViews.add(viewHolder.tvBanned);
+                viewHolder.textViews.add(viewHolder.tvWarning);
+                viewHolder.textViews.add(viewHolder.tvTimg);
+                String url2 = "http://ic.snssdk.com/neihan/video/playback/?video_id=3037a89e9e3f44338e2c55e0927e43f7&quality=480p&line=0&is_gif=0&device_platform=.mp4";
+//            String url = "http://p5.so.qhimgs1.com/bdr/200_200_/t014176f7a05b8f479b.jpg";
+                Random rand = new Random();
+                int num = rand.nextInt(Uri.length);
+                String s = Uri[num];
+                viewHolder.videoplayer.setUp(url2, JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, "搞笑娱乐");
+                new MyImageLoader().displayImage(context,s, viewHolder.videoplayer.thumbImageView);
+                viewHolder.videoplayer.thumbImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+
+                viewHolder.incMenu.bringToFront();
+
+
+            }
+
+
     }
 
     @Override
@@ -230,9 +264,43 @@ class UserDatilsTwoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         return list == null ? 0 : list.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
-        public ViewHolder(View itemView) {
+    class TJitemViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.userHeadImage)
+        ImageView userHeadImage;
+        @BindView(R.id.nickname)
+        TextView nickname;
+        @BindView(R.id.createTime)
+        TextView createTime;
+        @BindView(R.id.timg)
+        ImageView timg;
+        @BindView(R.id.warning)
+        ImageView warning;
+        @BindView(R.id.banned)
+        ImageView banned;
+        @BindView(R.id.tv_timg)
+        TextView tvTimg;
+        @BindView(R.id.tv_warning)
+        TextView tvWarning;
+        @BindView(R.id.tv_banned)
+        TextView tvBanned;
+        @BindView(R.id.img_publish)
+        ImageView imgPublish;
+        @BindView(R.id.title)
+        TextView title;
+        @BindView(R.id.repin1)
+        TextView repin1;
+        @BindView(R.id.repin2)
+        TextView repin2;
+        @BindView(R.id.inc_menu)
+        RelativeLayout incMenu;
+        @BindView(R.id.videoplayer)
+        JZVideoPlayerStandard videoplayer;
+        public List<ImageView> imageViews;
+        public List<TextView> textViews;
+
+        public TJitemViewHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 }

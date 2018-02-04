@@ -24,6 +24,7 @@ import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -167,7 +168,16 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new TJitemViewHolder(LayoutInflater.from(context).inflate(R.layout.item_tj, null, false));
     }
-
+    String[] Uri= {
+            "http://p5.so.qhimgs1.com/bdr/200_200_/t014176f7a05b8f479b.jpg",
+            "http://p0.so.qhimgs1.com/bdr/200_200_/t01af74f62990cb9c40.jpg",
+            "http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1308/25/c1/24851176_1377368343784_mthumb.jpg",
+            "http://img.7139.com/file/201206/10/be31dbcba825d7d157919a96027d9d60.jpg",
+            "http://www.nanrenwo.net/uploads/tagimg/3/141440266112318.jpg",
+            "http://p5.so.qhimgs1.com/bdr/200_200_/t017f6f30f1a76d312b.jpg",
+            "http://p2.so.qhimgs1.com/bdr/200_200_/t0185334976ac01c742.jpg",
+            "http://i2.hexunimg.cn/2011-11-30/135834127.jpg",
+            "http://photo.l99.com/bigger/31/1427449833570_9vpbg2.jpg"};
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         uid = rmLists.get(position).getUid()+"";
@@ -187,10 +197,16 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
             viewHolder.textViews.add(viewHolder.tvBanned);
             viewHolder.textViews.add(viewHolder.tvWarning);
             viewHolder.textViews.add(viewHolder.tvTimg);
-            String url2 = "http://ic.snssdk.com/neihan/video/playback/?video_id=3037a89e9e3f44338e2c55e0927e43f7&quality=480p&line=0&is_gif=0&device_platform=.mp4";
-            String url = "http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg";
-            viewHolder.videoplayer.setUp(url2,JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, "哎呦我靠");
-            new MyImageLoader().displayImage(context, url, viewHolder.videoplayer.thumbImageView);
+            String[] url2 ={"http://2449.vod.myqcloud.com/2449_22ca37a6ea9011e5acaaf51d105342e3.f20.mp4",
+                    "http://ic.snssdk.com/neihan/video/playback/?video_id=3037a89e9e3f44338e2c55e0927e43f7&quality=480p&line=0&is_gif=0&device_platform=.mp4"};
+//            String url = "http://p5.so.qhimgs1.com/bdr/200_200_/t014176f7a05b8f479b.jpg";
+            Random rand = new Random();
+            int num = rand.nextInt(Uri.length);
+            String s = Uri[num];
+            Random random = new Random();
+            String s1 = url2[random.nextInt(url2.length)];
+            viewHolder.videoplayer.setUp(s1,JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, "搞笑娱乐");
+            new MyImageLoader().displayImage(context,s, viewHolder.videoplayer.thumbImageView);
             viewHolder.videoplayer.thumbImageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
             viewHolder.incMenu.bringToFront();
