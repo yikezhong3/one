@@ -6,19 +6,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.boreas.quarterhour.R;
 import com.boreas.quarterhour.base.BaseFragment;
 import com.boreas.quarterhour.base.BasePresenter;
-import com.boreas.quarterhour.utils.dagger.DaggerMyComponent;
 import com.boreas.quarterhour.view.fragment.Video.SPRMFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
 
 /**
  * Created by Dell on 2018/1/19.
@@ -65,10 +60,8 @@ public class VideoFragment extends BaseFragment {
                     //不行的话就用这行转码,再传过去就能使用了
                     //String s = URLEncoder.encode("福利");
                     bundle.putString("name" , "热门");
-                    Toast.makeText(getActivity(),"热门",Toast.LENGTH_LONG).show();
                 }else if (list.get(position).equals("附近")){
                     bundle.putString("name" , "附近");
-                    Toast.makeText(getActivity(),"附近",Toast.LENGTH_LONG).show();
                 }
                 videohotFragment.setArguments(bundle);
                 return videohotFragment;

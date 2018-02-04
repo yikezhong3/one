@@ -81,6 +81,7 @@
         <activity android:name=".view.activity.SettingActivity" />
         <activity android:name=".view.activity.PhotoBrowseActivity" />
         <activity android:name=".view.activity.ImageShowActivity"></activity>
+        <activity android:name=".view.activity.CreateActivity"/>
     </application>
 
 </manifest>
