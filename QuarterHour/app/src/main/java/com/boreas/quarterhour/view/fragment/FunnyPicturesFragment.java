@@ -48,13 +48,15 @@ public class FunnyPicturesFragment extends BaseFragment {
 
     @Override
     protected void init() {
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+
+        StaggeredGridLayoutManager gridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter = new ImageAdapter(getActivity()));
         //加载动画
         recyclerView.showProgress();
 
         //添加边框
-        SpaceDecoration itemDecoration = new SpaceDecoration((int) convertDpToPixel(8,getActivity()));
+        SpaceDecoration itemDecoration = new SpaceDecoration((int) convertDpToPixel(3,getActivity()));
         itemDecoration.setPaddingEdgeSide(true);
         itemDecoration.setPaddingStart(true);
         itemDecoration.setPaddingHeaderFooter(false);
