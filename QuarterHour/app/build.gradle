@@ -74,6 +74,6 @@ dependencies {
     compile 'cn.jzvd:jiaozivideoplayer:6.2.7'
     compile 'com.android.support:recyclerview-v7:26+'
     compile 'com.carson_ho:SearchLayout:1.0.1'
-    compile'com.android.support:design:26+'
+    compile 'com.android.support:design:26+'
     compile 'com.nineoldandroids:library:2.4.0'
 }

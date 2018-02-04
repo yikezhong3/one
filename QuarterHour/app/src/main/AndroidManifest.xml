@@ -13,6 +13,13 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:name=".view.myapp.Myapp"
@@ -58,14 +65,12 @@
         <activity
             android:name="com.umeng.qq.tencent.AssistActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.PropertyActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
@@ -78,9 +83,12 @@
         <activity android:name=".view.activity.CollectActivity" />
         <activity android:name=".view.SelectActivity" />
         <activity android:name=".view.activity.MineActivity" />
-        <activity android:name=".view.activity.SettingActivity"></activity>
-            android:screenOrientation="portrait" />
-        <activity android:name=".view.activity.PhotoBrowseActivity"></activity>
+        <activity android:name=".view.activity.SettingActivity" />
+        android:screenOrientation="portrait" />
+        <activity android:name=".view.activity.PhotoBrowseActivity" />
+        <activity android:name=".view.activity.CreateActivity" />
+        <activity android:name=".view.activity.FilmActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

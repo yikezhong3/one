@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <SurfaceView
+        android:id="@+id/surfaceview"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="70dp"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="70dp"
+        android:src="@drawable/donghua"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:id="@+id/btnStartStop"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/btnPlayVideo"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/yuan" />
+
+    <Button
+        android:id="@+id/btnPlayVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20sp"
+        android:text="播放"/>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="0"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="20dp"/>
+
+</RelativeLayout>
