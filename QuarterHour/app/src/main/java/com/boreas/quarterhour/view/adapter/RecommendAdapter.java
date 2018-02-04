@@ -18,6 +18,7 @@ import com.boreas.quarterhour.model.RMBean;
 import com.boreas.quarterhour.utils.MyImageLoader;
 import com.boreas.quarterhour.utils.ShowAnimUtil;
 import com.boreas.quarterhour.view.activity.UserDetailsActivity;
+import com.bumptech.glide.Glide;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
@@ -158,6 +159,7 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
     private List<RMBean.DataBean.UserBean> userBeans = new ArrayList<>();
     private List<RMBean.DataBean.CommentsBean> commentsBeans = new ArrayList<>();
     private String uid = "";
+    private String userIcon;
 
     public TJitemAdapter(Context context, List<RMBean.DataBean> rmLists) {
         this.context = context;
@@ -233,8 +235,17 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
             viewHolder.nickname.setText(userBeans.get(0).getNickname());
 
             viewHolder.userHeadImage.setOnClickListener(this);
-
-            new MyImageLoader().displayImage(context, "http://pic2.cxtuku.com/00/16/04/b163c9e46800.jpg", viewHolder.userHeadImage);
+            String[] Usicon = {
+                    "http://up.qqjia.com/z/24/tu29339_1.jpg",
+                    "http://qqwo.cc/d/file/QQtouxiang/touxiangnansheng/2012/09/27/qqwo4030271102492.jpg",
+                    "http://p0.so.qhimgs1.com/bdr/200_200_/t01b5abc47a9bc91dbc.jpg",
+                    "http://www.soideas.cn/uploads/allimg/120323/103U92940-28.jpg"
+            };
+            Random ran = new Random();
+            int i = ran.nextInt(Usicon.length);
+            userIcon = Usicon[i];
+            Glide.with(context).load(userIcon).into(((TJitemViewHolder) holder).userHeadImage);
+//            new MyImageLoader().displayImage(context, "http://pic2.cxtuku.com/00/16/04/b163c9e46800.jpg", viewHolder.userHeadImage);
             viewHolder.createTime.setText(arrs[0] + " " + arrs[1]);
             viewHolder.title.setText(rmLists.get(position).getWorkDesc());
             viewHolder.repin1.setText(commentsBeans.get(0).getNickname() + ":" + commentsBeans.get(0).getContent());
@@ -261,6 +272,7 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
                 break;
             case R.id.userHeadImage:
                 Intent intent = new Intent(context, UserDetailsActivity.class);
+                intent.putExtra("id",userIcon);
                 intent.putExtra("uid", uid);
                 context.startActivity(intent);
                 break;

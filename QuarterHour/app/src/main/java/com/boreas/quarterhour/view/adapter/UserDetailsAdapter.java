@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.boreas.quarterhour.R;
 import com.boreas.quarterhour.model.UserDetailBean;
-import com.boreas.quarterhour.utils.CornersTransform;
 import com.boreas.quarterhour.utils.MyImageLoader;
 import com.bumptech.glide.Glide;
 
@@ -41,9 +40,10 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private int playNum;
     private int zanNum = 0;
     private ViewHolderTwo holderTwo;
-
-    public UserDetailsAdapter(Context context) {
+    String id;
+    public UserDetailsAdapter(Context context, String id) {
         this.context = context;
+        this.id = id;
     }
 
     public void addData(UserDetailBean bean) {
@@ -67,17 +67,26 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        String userDetailGroundUrl = "http://img06.tooopen.com/images/20170916/tooopen_sy_224744914937.jpg";
-        String userDetailImageUsl = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517305649973&di=48f9cd2fe376b104e691f278e9fe5a33&imgtype=0&src=http%3A%2F%2Fimg1.50tu.com%2Fmeinv%2Fxinggan%2F2013-11-16%2Fe65e7cd83f37eed87067299266152807.jpg";
+        String[] userDetailGroundUrl = {
+                "http://p3.so.qhmsg.com/bdr/200_200_/t01dad3a68c44bb10b8.jpg",
+                "http://p2.so.qhimgs1.com/bdr/200_200_/t018592f67246e67152.jpg",
+                "http://p0.so.qhimgs1.com/bdr/200_200_/t017f427c7358d568ec.jpg",
+                "http://pic.58pic.com/58pic/10/94/53/26W58PICj6f.jpg"
+        };
+        Random ran = new Random();
+        int i = ran.nextInt(userDetailGroundUrl.length);
+        String userIcon = userDetailGroundUrl[i];
         if (list != null) {
             if (holder instanceof ViewHolderOne) {
                 holderOne = (ViewHolderOne) holder;
 
                 playNum = list.get(position).getPlayNum();
                 Log.d("wid----",playNum+"---"+list.size()+"--wid--"+list.toString());
-                new MyImageLoader().displayImage(context, userDetailGroundUrl, holderOne.userDetailGround);
+                Glide.with(context).load(id).into(holderOne.userDetailImage);
+                Glide.with(context).load(userIcon).into(holderOne.userDetailGround);
+//                new MyImageLoader().displayImage(context, userDetailGroundUrl, holderOne.userDetailGround);
                 holderOne.userDetailGround.setScaleType(ImageView.ScaleType.FIT_XY);
-                Glide.with(context).load(userDetailImageUsl).error(R.mipmap.slid_touxiang).transform(new CornersTransform(context, 10)).into(holderOne.userDetailImage);
+//                Glide.with(context).load(userDetailImageUsl).error(R.mipmap.slid_touxiang).transform(new CornersTransform(context, 10)).into(holderOne.userDetailImage);
                 holderOne.userDetailImage.setScaleType(ImageView.ScaleType.FIT_XY);
                 holderOne.worksNum.setText("作品(" + list.size() + ")");
                 holderOne.followNum.setText(playNum + "关注");
@@ -95,7 +104,7 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
                 holderTwo.recycleTjItem.setLayoutManager(layoutManager);
-                holderTwo.recycleTjItem.setAdapter(new UserDatilsTwoAdapter(context, list));
+                holderTwo.recycleTjItem.setAdapter(new UserDatilsTwoAdapter(context, list,id));
             }
         }
 
@@ -166,12 +175,6 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     class ViewHolderOne extends RecyclerView.ViewHolder {
         @BindView(R.id.userDetailGround)
         ImageView userDetailGround;
-        @BindView(R.id.userDetailTitle)
-        TextView userDetailTitle;
-        @BindView(R.id.userDetailShare)
-        ImageView userDetailShare;
-        @BindView(R.id.userDetailFollow)
-        ImageView userDetailFollow;
         @BindView(R.id.userDetailImage)
         ImageView userDetailImage;
         @BindView(R.id.fansNum)
@@ -209,9 +212,11 @@ public class UserDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 class UserDatilsTwoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private List<UserDetailBean.DataBean> list;
-    public UserDatilsTwoAdapter(Context context, List<UserDetailBean.DataBean> list) {
+    String i;
+    public UserDatilsTwoAdapter(Context context, List<UserDetailBean.DataBean> list, String id) {
         this.context = context;
         this.list = list;
+        this.i = id;
     }
 
     @Override
@@ -250,7 +255,7 @@ class UserDatilsTwoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 viewHolder.videoplayer.setUp(url2, JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, "搞笑娱乐");
                 new MyImageLoader().displayImage(context,s, viewHolder.videoplayer.thumbImageView);
                 viewHolder.videoplayer.thumbImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-
+               Glide.with(context).load(i).into(viewHolder.userHeadImage);
                 viewHolder.incMenu.bringToFront();
 
 

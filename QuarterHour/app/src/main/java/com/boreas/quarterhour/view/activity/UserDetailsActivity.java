@@ -43,6 +43,8 @@ public class UserDetailsActivity extends BaseActivity implements UserDatilsView 
         map.put("page", page + "");
         map.put("source", "android");
         map.put("appVersion", "101");
+        String id = getIntent().getStringExtra("id");
+
         if (uid != null && !"".equals(uid)) {
             presenter = new UserDatilsPresenter(this);
             presenter.getData(map);
@@ -53,7 +55,7 @@ public class UserDetailsActivity extends BaseActivity implements UserDatilsView 
                 }
             };
             userDetailRecycle.setLayoutManager(layoutManager);
-            adapter = new UserDetailsAdapter(this);
+            adapter = new UserDetailsAdapter(this,id);
             userDetailRecycle.setAdapter(adapter);
         }
     }

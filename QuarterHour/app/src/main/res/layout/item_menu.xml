@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/banned"
+        android:layout_below="@id/banned"
         android:visibility="gone"
         android:layout_marginRight="30dp"
         android:text="屏蔽"/>
@@ -41,7 +41,7 @@
         android:layout_below="@+id/timg"
         android:visibility="gone"
         android:layout_marginRight="14dp"
-        android:text="复制链接"/>
+        android:text="复制"/>
     <TextView
         android:id="@+id/tv_banned"
         android:layout_width="wrap_content"

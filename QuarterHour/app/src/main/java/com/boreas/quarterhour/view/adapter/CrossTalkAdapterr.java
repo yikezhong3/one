@@ -14,9 +14,11 @@ import com.boreas.quarterhour.R;
 import com.boreas.quarterhour.model.CrossTalkBean;
 import com.boreas.quarterhour.utils.ShowAnimUtil;
 import com.boreas.quarterhour.view.activity.UserDetailsActivity;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -68,6 +70,15 @@ public class CrossTalkAdapterr extends RecyclerView.Adapter<CrossTalkAdapterr.IV
                 }
             }
         });
+        String[] icon = {
+                "http://www.touxiang.cn/uploads/20120424/24-072913_588.jpg",
+                "http://www.qqw21.com/article/uploadpic/2012-10/2012102021484250117.jpg",
+                "http://img1.3lian.com/gif/more/11/201212/0cd802cd2418da3657db1588130e6a30.jpg",
+        };
+        Random random = new Random();
+        int i = random.nextInt(icon.length);
+        String pic = icon[i];
+        Glide.with(context).load(pic).into(holder.adapterDzicon);
         uid = list.get(position).getUid() + "";
         holder.adapterDztext.setText(list.get(position).getContent());
         holder.adapterDztime.setText(list.get(position).getCreateTime());
