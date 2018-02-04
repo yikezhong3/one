@@ -8,9 +8,9 @@
        >
         <ImageView
             android:id="@+id/adapter_dzicon"
-            android:layout_width="@dimen/icon_width"
-            android:layout_height="@dimen/icon_height"
-            android:src="@drawable/icon"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:src="@mipmap/ic_launcher"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="10dp"
@@ -28,18 +28,23 @@
             >
             <TextView
                 android:layout_width="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:id="@+id/adapter_dzname"
                 android:text="天蝎"/>
+
             <TextView
+                android:id="@+id/adapter_dztime"
+                android:textSize="16dp"
+                android:textColor="@color/nightColorPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="时间"
-                android:layout_marginLeft="5dp"
-                android:id="@+id/adapter_dztime"/>
+                android:layout_marginLeft="0dp"
+                android:text="时间" />
         </LinearLayout>
        <include
-           android:layout_marginTop="10dp"
+           android:layout_marginTop="16dp"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            layout="@layout/item_menu"/>
@@ -47,9 +52,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="爱好积所所所所所所所所所所所所所所所所所所所所所"
+        android:text="爱好所"
         android:id="@+id/adapter_dztext"
+        android:textSize="18dp"
         android:layout_marginTop="10dp"
+        android:textColor="@color/black"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"/>

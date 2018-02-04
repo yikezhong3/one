@@ -2,6 +2,7 @@ package com.boreas.quarterhour.view.fragment;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.SharedElementCallback;
@@ -38,6 +39,7 @@ public class FunnyPicturesFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
+
         return R.layout.fragment_pt;
     }
 
@@ -48,15 +50,14 @@ public class FunnyPicturesFragment extends BaseFragment {
 
     @Override
     protected void init() {
-
-        StaggeredGridLayoutManager gridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(gridLayoutManager);
+//        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
         recyclerView.setAdapter(adapter = new ImageAdapter(getActivity()));
         //加载动画
         recyclerView.showProgress();
 
         //添加边框
-        SpaceDecoration itemDecoration = new SpaceDecoration((int) convertDpToPixel(3,getActivity()));
+        SpaceDecoration itemDecoration = new SpaceDecoration((int) convertDpToPixel(8,getActivity()));
         itemDecoration.setPaddingEdgeSide(true);
         itemDecoration.setPaddingStart(true);
         itemDecoration.setPaddingHeaderFooter(false);

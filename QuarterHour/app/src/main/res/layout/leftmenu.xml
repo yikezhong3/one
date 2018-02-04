@@ -66,15 +66,19 @@
             <TextView
                 android:layout_weight="2"
                 android:text="夜间模式"
+                android:textSize="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <com.boreas.quarterhour.utils.SwitchView
                 android:id="@+id/drawableSwitch"
-                android:layout_width="80dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
+                android:layout_width="100dp"
+                android:layout_height="37dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="15dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_weight="1"
                 lh2:circleColor="#F9F9F9"
                 lh2:isSwitchOn="false"
                 lh2:radius="20dp"
@@ -100,7 +104,7 @@
                     android:id="@+id/wenjianjia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/slid_wenjianjia" />
+                    android:src="@mipmap/wenjianjia" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -118,7 +122,7 @@
                     android:id="@+id/shezhi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/slid_shezhi" />
+                    android:src="@mipmap/shezhi" />
 
                 <TextView
                     android:layout_width="wrap_content"
