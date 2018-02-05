@@ -224,15 +224,15 @@ class UserDatilsTwoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         return new TJitemViewHolder(LayoutInflater.from(context).inflate(R.layout.item_tj,null,false));
     }
     String[] Uri= {
-            "http://p5.so.qhimgs1.com/bdr/200_200_/t014176f7a05b8f479b.jpg",
-            "http://p0.so.qhimgs1.com/bdr/200_200_/t01af74f62990cb9c40.jpg",
-            "http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1308/25/c1/24851176_1377368343784_mthumb.jpg",
-            "http://img.7139.com/file/201206/10/be31dbcba825d7d157919a96027d9d60.jpg",
             "http://www.nanrenwo.net/uploads/tagimg/3/141440266112318.jpg",
             "http://p5.so.qhimgs1.com/bdr/200_200_/t017f6f30f1a76d312b.jpg",
             "http://p2.so.qhimgs1.com/bdr/200_200_/t0185334976ac01c742.jpg",
             "http://i2.hexunimg.cn/2011-11-30/135834127.jpg",
-            "http://photo.l99.com/bigger/31/1427449833570_9vpbg2.jpg"};
+            "http://photo.l99.com/bigger/31/1427449833570_9vpbg2.jpg",
+            "http://p5.so.qhimgs1.com/bdr/200_200_/t014176f7a05b8f479b.jpg",
+            "http://p0.so.qhimgs1.com/bdr/200_200_/t01af74f62990cb9c40.jpg",
+            "http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1308/25/c1/24851176_1377368343784_mthumb.jpg",
+            "http://img.7139.com/file/201206/10/be31dbcba825d7d157919a96027d9d60.jpg"};
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 

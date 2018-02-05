@@ -160,6 +160,7 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
     private List<RMBean.DataBean.CommentsBean> commentsBeans = new ArrayList<>();
     private String uid = "";
     private String userIcon;
+    private String s;
 
     public TJitemAdapter(Context context, List<RMBean.DataBean> rmLists) {
         this.context = context;
@@ -204,11 +205,11 @@ class TJitemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
 //            String url = "http://p5.so.qhimgs1.com/bdr/200_200_/t014176f7a05b8f479b.jpg";
             Random rand = new Random();
             int num = rand.nextInt(Uri.length);
-            String s = Uri[num];
+            s = Uri[num];
             Random random = new Random();
             String s1 = url2[random.nextInt(url2.length)];
             viewHolder.videoplayer.setUp(s1,JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, "搞笑娱乐");
-            new MyImageLoader().displayImage(context,s, viewHolder.videoplayer.thumbImageView);
+            new MyImageLoader().displayImage(context, s, viewHolder.videoplayer.thumbImageView);
             viewHolder.videoplayer.thumbImageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
             viewHolder.incMenu.bringToFront();

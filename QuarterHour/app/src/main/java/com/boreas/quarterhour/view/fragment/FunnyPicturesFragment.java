@@ -2,7 +2,6 @@ package com.boreas.quarterhour.view.fragment;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.SharedElementCallback;
@@ -11,6 +10,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.boreas.quarterhour.R;
 import com.boreas.quarterhour.base.BaseFragment;
@@ -36,6 +36,7 @@ public class FunnyPicturesFragment extends BaseFragment {
     ImageAdapter adapter;
     private Bundle mReenterState;
     ViewGroup parent;
+    private FrameLayout frameLayout;
 
     @Override
     protected int getLayoutId() {
@@ -111,6 +112,7 @@ public class FunnyPicturesFragment extends BaseFragment {
 
     }
 
+
     private void setSharedElementCallback( ) {
         ActivityCompat.setExitSharedElementCallback(getActivity(), new SharedElementCallback() {
             @Override
@@ -133,6 +135,7 @@ public class FunnyPicturesFragment extends BaseFragment {
     protected void initView(View view) {
         recyclerView = view.findViewById(R.id.recy);
         parent = (ViewGroup) view.findViewById(R.id.container);
+        frameLayout = view.findViewById(R.id.flayout);
     }
 
 

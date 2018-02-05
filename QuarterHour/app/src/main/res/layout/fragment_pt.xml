@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/back_funpic">
+    android:id="@+id/flayout"
+    android:background="@drawable/back_funpic2">
     <LinearLayout
         android:layout_width="match_parent"
         android:padding="5dp"
